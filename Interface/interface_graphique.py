@@ -2,10 +2,8 @@ import Actuariat.actuariat_function as af
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
-from kivy.base import runTouchApp
 from kivy.uix.dropdown import DropDown
 
 
@@ -13,7 +11,7 @@ class Application(App):
     def build(self):
         self.window = GridLayout()
         self.window.cols = 2
-        self.window.rows = 5
+        self.window.rows = 7
         self.table = af.tables
 
         self.choice = Label(
@@ -53,10 +51,24 @@ class Application(App):
         )
         self.window.add_widget(self.age)
 
+        self.saisie_n = Label(
+            text="Saisir le nombre d'année n à ajouter : ",
+            font_size=20,
+        )
+        self.window.add_widget(self.saisie_n)
+
+        self.n = TextInput(
+            multiline=False,
+            padding_y=(20, 20),
+            size_hint=(0.5, 0.5),
+            input_filter="int"
+        )
+        self.window.add_widget(self.n)
+
         self.qx = Button(
-            text="Probabilité de mourir(qx) : ",
+            text="Probabilité de mourir à l'âge saisi : ",
             bold=True,
-            background_color=(1, 1, 1, 1)
+            background_color=(0.0, 0.0, 1, 1)
         )
         self.qx.bind(on_press=self.callback_qx)
         self.window.add_widget(self.qx)
@@ -68,9 +80,9 @@ class Application(App):
         self.window.add_widget(self.print_qx)
 
         self.px = Button(
-            text="Probabilité de vivre(px) : ",
+            text="Probabilité de vivre à l'âge saisi : ",
             bold=True,
-            background_color=(1, 1, 1, 1)
+            background_color=(1, 0.0, 0.0, 1)
         )
         self.px.bind(on_press=self.callback_px)
         self.window.add_widget(self.px)
@@ -82,9 +94,9 @@ class Application(App):
         self.window.add_widget(self.print_px)
 
         self.dx = Button(
-            text="nombre de personne décédé: ",
+            text="nombre de personne décédé durant l'âge saisi: ",
             bold=True,
-            background_color=(1, 1, 1, 1)
+            background_color=(0, 1, 0, 1)
         )
         self.dx.bind(on_press=self.callback_dx)
         self.window.add_widget(self.dx)
@@ -94,6 +106,20 @@ class Application(App):
             font_size=20
         )
         self.window.add_widget(self.print_dx)
+
+        self.npx = Button(
+            text="probabilité de vivre entre l'âge x et l'âge x+n ",
+            bold=True,
+            background_color=(0.7, 0.21, 0.9, 1)
+        )
+        self.npx.bind(on_press=self.callback_npx)
+        self.window.add_widget(self.npx)
+
+        self.print_npx = Label(
+            text="?",
+            font_size=20
+        )
+        self.window.add_widget(self.print_npx)
 
         return self.window
 
@@ -105,13 +131,19 @@ class Application(App):
 
     def callback_qx(self, instance):
         self.print_qx.text = str(af.qx(int(self.age.text), self.choix_table()))
-        print(af.qx(10, af.tables[0]))
 
     def callback_px(self, instance):
         self.print_px.text = str(af.px(int(self.age.text), self.choix_table()))
 
     def callback_dx(self, instance):
         self.print_dx.text = str(af.dx(int(self.age.text), self.choix_table()))
+
+    def callback_npx(self, instance):
+        if int(self.age.text) + int(self.n.text) >= len(self.choix_table()) - 1:
+            self.n.text = str(len(self.choix_table()) - 1 - int(self.age.text))
+            self.print_npx.text = str(af.npx(int(self.age.text), int(self.n.text), self.choix_table()))
+        else:
+            self.print_npx.text = str(af.npx(int(self.age.text), int(self.n.text), self.choix_table()))
 
 
 if __name__ == "__main__":

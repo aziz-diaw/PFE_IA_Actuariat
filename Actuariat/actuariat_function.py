@@ -16,7 +16,8 @@ TV_88_90 = [100000, 99352, 99294, 99261, 99236, 99214, 99194, 99177, 99161, 9914
             24739, 20704, 16959, 13580, 10636, 8118, 6057, 4378, 3096, 2184, 1479, 961, 599, 358, 205, 113, 59, 30, 14,
             6, 2]
 
-tables = [TD_88_90,TV_88_90]
+tables = [TD_88_90, TV_88_90]
+
 
 def qx(x, table):
     if x >= len(table) - 1:
@@ -39,5 +40,5 @@ def dx(x, table):
         return table[x] - table[x + 1]
 
 
-print(len(TD_88_90))
-print(TD_88_90[106])
+def npx(x, n, table):
+    return table[x + n] / table[x]
