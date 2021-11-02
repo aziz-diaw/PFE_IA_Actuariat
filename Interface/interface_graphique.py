@@ -17,7 +17,7 @@ class Application(App):
 
         self.user = Label(
             text="Saisir l'âge : ",
-            font_size=18,
+            font_size=20,
         )
         self.window.add_widget(self.user)
 

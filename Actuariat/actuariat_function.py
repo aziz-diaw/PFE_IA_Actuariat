@@ -11,6 +11,7 @@ def qx(x, table):
     return (table[x] - table[x+1])/table[x]
 
 
+
 def px(x, table):
     return 1 - qx(x, table)
 
