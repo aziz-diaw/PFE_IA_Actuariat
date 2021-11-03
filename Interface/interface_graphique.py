@@ -11,7 +11,7 @@ class Application(App):
     def build(self):
         self.window = GridLayout()
         self.window.cols = 2
-        self.window.rows = 7
+        self.window.rows = 8
         self.table = af.tables
 
         self.choice = Label(
@@ -29,6 +29,15 @@ class Application(App):
         tab2 = Button(text="TV_88_90", size_hint_y=None, height=44)
         tab2.bind(on_release=lambda tab2: dropdown.select(tab2.text))
         dropdown.add_widget(tab2)
+
+        tab3 = Button(text="TH_00_02", size_hint_y=None, height=44)
+        tab3.bind(on_release=lambda tab3: dropdown.select(tab3.text))
+        dropdown.add_widget(tab3)
+
+        tab4 = Button(text="TF_00_02", size_hint_y=None, height=44)
+        tab4.bind(on_release=lambda tab4: dropdown.select(tab4.text))
+        dropdown.add_widget(tab4)
+
 
         self.mainbutton = Button(text="Tables")
         self.mainbutton.bind(on_release=dropdown.open)
@@ -121,6 +130,20 @@ class Application(App):
         )
         self.window.add_widget(self.print_npx)
 
+        self.nqx = Button(
+            text="probabilité de mourir entre l'âge x et l'âge x+n ",
+            bold=True,
+            background_color=(0.5, 0.6, 0.3, 1)
+        )
+        self.nqx.bind(on_press=self.callback_nqx)
+        self.window.add_widget(self.nqx)
+
+        self.print_nqx = Label(
+            text="?",
+            font_size=20
+        )
+        self.window.add_widget(self.print_nqx)
+
         return self.window
 
     def choix_table(self):
@@ -128,6 +151,10 @@ class Application(App):
             return af.tables[0]
         elif self.mainbutton.text == "TV_88_90":
             return af.tables[1]
+        elif self.mainbutton.text == "TH_00_02":
+            return af.tables[2]
+        elif self.mainbutton.text == "TF_00_02":
+            return af.tables[3]
 
     def callback_qx(self, instance):
         self.print_qx.text = str(af.qx(int(self.age.text), self.choix_table()))
@@ -141,9 +168,22 @@ class Application(App):
     def callback_npx(self, instance):
         if int(self.age.text) + int(self.n.text) >= len(self.choix_table()) - 1:
             self.n.text = str(len(self.choix_table()) - 1 - int(self.age.text))
-            self.print_npx.text = str(af.npx(int(self.age.text), int(self.n.text), self.choix_table()))
+            if self.age.text == str(len(self.choix_table()) - 1):
+                self.print_npx.text = "0"
+            else:
+                self.print_npx.text = str(af.npx(int(self.age.text), int(self.n.text), self.choix_table()))
         else:
             self.print_npx.text = str(af.npx(int(self.age.text), int(self.n.text), self.choix_table()))
+
+    def callback_nqx(self, instance):
+        if int(self.age.text) + int(self.n.text) >= len(self.choix_table()) - 1:
+            self.n.text = str(len(self.choix_table()) - 1 - int(self.age.text))
+            if self.age.text == str(len(self.choix_table()) - 1):
+                self.print_nqx.text = "1"
+            else:
+                self.print_nqx.text = str(af.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
+        else:
+            self.print_nqx.text = str(af.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
 
 
 if __name__ == "__main__":
