@@ -5,7 +5,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
-
+from kivy.core.window import Window
 
 class Application(App):
     def build(self):
@@ -13,12 +13,15 @@ class Application(App):
         self.window.cols = 2
         self.window.rows = 8
         self.table = af.tables
+        Window.clearcolor = (126/255, 147/255, 97/255,1)
 
         self.choice = Label(
             text="Choix de la table de mortalité",
             font_size=20,
         )
         self.window.add_widget(self.choice)
+
+
 
         ### liste des tables
         dropdown = DropDown()
