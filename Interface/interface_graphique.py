@@ -1,4 +1,6 @@
-import Actuariat.actuariat_function as af
+import Actuariat.probabilities_one_insured as poi
+import Table.tables as table
+
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -12,7 +14,7 @@ class Application(App):
         self.window = GridLayout()
         self.window.cols = 2
         self.window.rows = 8
-        self.table = af.tables
+        self.table = table.tables
         Window.clearcolor = (126/255, 147/255, 97/255,1)
 
         self.choice = Label(
@@ -151,22 +153,22 @@ class Application(App):
 
     def choix_table(self):
         if self.mainbutton.text == "TD_88_90":
-            return af.tables[0]
+            return table.tables[0]
         elif self.mainbutton.text == "TV_88_90":
-            return af.tables[1]
+            return table.tables[1]
         elif self.mainbutton.text == "TH_00_02":
-            return af.tables[2]
+            return table.tables[2]
         elif self.mainbutton.text == "TF_00_02":
-            return af.tables[3]
+            return table.tables[3]
 
     def callback_qx(self, instance):
-        self.print_qx.text = str(af.qx(int(self.age.text), self.choix_table()))
+        self.print_qx.text = str(poi.qx(int(self.age.text), self.choix_table()))
 
     def callback_px(self, instance):
-        self.print_px.text = str(af.px(int(self.age.text), self.choix_table()))
+        self.print_px.text = str(poi.px(int(self.age.text), self.choix_table()))
 
     def callback_dx(self, instance):
-        self.print_dx.text = str(af.dx(int(self.age.text), self.choix_table()))
+        self.print_dx.text = str(poi.dx(int(self.age.text), self.choix_table()))
 
     def callback_npx(self, instance):
         if int(self.age.text) + int(self.n.text) >= len(self.choix_table()) - 1:
@@ -174,9 +176,9 @@ class Application(App):
             if self.age.text == str(len(self.choix_table()) - 1):
                 self.print_npx.text = "0"
             else:
-                self.print_npx.text = str(af.npx(int(self.age.text), int(self.n.text), self.choix_table()))
+                self.print_npx.text = str(poi.npx(int(self.age.text), int(self.n.text), self.choix_table()))
         else:
-            self.print_npx.text = str(af.npx(int(self.age.text), int(self.n.text), self.choix_table()))
+            self.print_npx.text = str(poi.npx(int(self.age.text), int(self.n.text), self.choix_table()))
 
     def callback_nqx(self, instance):
         if int(self.age.text) + int(self.n.text) >= len(self.choix_table()) - 1:
@@ -184,9 +186,9 @@ class Application(App):
             if self.age.text == str(len(self.choix_table()) - 1):
                 self.print_nqx.text = "1"
             else:
-                self.print_nqx.text = str(af.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
+                self.print_nqx.text = str(poi.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
         else:
-            self.print_nqx.text = str(af.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
+            self.print_nqx.text = str(poi.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
 
 
 if __name__ == "__main__":

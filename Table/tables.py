@@ -34,33 +34,3 @@ TF_00_02 = [100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 1000
 
 tables = [TD_88_90, TV_88_90, TH_00_02,TF_00_02]
 
-
-def qx(x, table):
-    if x >= len(table) - 1:
-        return 1
-    else:
-        return (table[x] - table[x + 1]) / table[x]
-
-
-def px(x, table):
-    if x >= len(table) - 1:
-        return 0
-    else:
-        return 1 - qx(x, table)
-
-
-def dx(x, table):
-    if x >= len(table) - 1:
-        return 0
-    else:
-        return table[x] - table[x + 1]
-
-
-def npx(x, n, table):
-    if x >= len(table) - 1:
-        return 0
-    return table[x + n] / table[x]
-
-
-def nqx(x, n, table):
-    return 1 - npx(x, n, table)
