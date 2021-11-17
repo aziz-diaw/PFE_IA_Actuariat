@@ -1,3 +1,6 @@
+def v(i):
+    return 1 / (1 + i)
+
 # Death between ages x and x + 1
 def qx(x, table):
     if x >= len(table) - 1:

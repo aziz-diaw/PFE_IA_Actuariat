@@ -9,6 +9,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
 from kivy.core.window import Window
 
+from kivy.uix.screenmanager import ScreenManager, Screen
+
 class Application(App):
     def build(self):
         self.window = GridLayout()
@@ -22,8 +24,6 @@ class Application(App):
             font_size=20,
         )
         self.window.add_widget(self.choice)
-
-
 
         ### liste des tables
         dropdown = DropDown()

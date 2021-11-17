@@ -1,89 +1,90 @@
 import Actuariat.commutation_case_life as ccl
+import probabilities_one_insured as poi
 
 
 ## Life Annuities due at the End of year
 
 # Up to the death
-def ax(x, table, v):
-    return ccl.Nx(x + 1, table, v) / ccl.Dx(x, v, table)
+def ax(x, table, i):
+    return ccl.Nx(x + 1, table, poi.v(i)) / ccl.Dx(x, poi.v(i), table)
 
 
 # Temporary
-def a_xn(x, n, v, table):
-    return (ccl.Nx(x + 1, table, v) - ccl.Nx(x + n + 1, table, v)) / ccl.Dx(x, v, table)
+def a_xn(x, n, i, table):
+    return (ccl.Nx(x + 1, table, poi.v(i)) - ccl.Nx(x + n + 1, table, poi.v(i))) / ccl.Dx(x, poi.v(i), table)
 
 
 # Deferred
-def m_ax(x, m, v, table):
-    return ccl.Nx(x + m + 1, table, v) / ccl.Dx(x, v, table)
+def m_ax(x, m, i, table):
+    return ccl.Nx(x + m + 1, table, poi.v(i)) / ccl.Dx(x, poi.v(i), table)
 
 
 # Temporary (n) and deferred (m)
-def m_a_xn(x, n, m, v, table):
-    return (ccl.Nx(x + m + 1, table, v) - ccl.Nx(x + m + n + 1, table, v)) / ccl.Dx(x, v, table)
+def m_a_xn(x, n, m, i, table):
+    return (ccl.Nx(x + m + 1, table, poi.v(i)) - ccl.Nx(x + m + n + 1, table, poi.v(i))) / ccl.Dx(x, poi.v(i), table)
 
 
 ## Life Annuities due at the beginning of year
 
 # Up to the death
-def _ax_(x, table, v):
-    return ccl.Nx(x, table, v) / ccl.Dx(x, v, table)
+def _ax_(x, table, i):
+    return ccl.Nx(x, table, poi.v(i)) / ccl.Dx(x, poi.v(i), table)
 
 
 # Temporary
-def _a_xn_(x, n, v, table):
-    return (ccl.Nx(x, table, v) - ccl.Nx(x + n, table, v)) / ccl.Dx(x, v, table)
+def _a_xn_(x, n, i, table):
+    return (ccl.Nx(x, table, poi.v(i)) - ccl.Nx(x + n, table, poi.v(i))) / ccl.Dx(x, poi.v(i), table)
 
 
 # Deferred
-def _m_ax_(x, m, v, table):
-    return ccl.Nx(x + m, table, v) / ccl.Dx(x, v, table)
+def _m_ax_(x, m, i, table):
+    return ccl.Nx(x + m, table, poi.v(i)) / ccl.Dx(x, poi.v(i), table)
 
 
 # Temporary (n) and deferred (m)
-def _m_a_xn_(x, n, m, v, table):
-    return (ccl.Nx(x + m, table, v) - ccl.Nx(x + m + n, table, v)) / ccl.Dx(x, v, table)
+def _m_a_xn_(x, n, m, i, table):
+    return (ccl.Nx(x + m, table, poi.v(i)) - ccl.Nx(x + m + n, table, poi.v(i))) / ccl.Dx(x, poi.v(i), table)
 
 
 ## Life Annuities with several payment each year, due at the end of the period
 
 # Up to the death
-def ax_k(x, table, v, k):
-    return ax(x, table, v) + (k - 1) / (2 * k)
+def ax_k(x, table, i, k):
+    return ax(x, table, poi.v(i)) + (k - 1) / (2 * k)
 
 
 # Temporary
-def a_xn_k(x, n, v, table, k):
-    return a_xn(x, n, v, table) + ((k - 1) / (2 * k)) * (1 - ccl.nEx(x, n, v, table))
+def a_xn_k(x, n, i, table, k):
+    return a_xn(x, n, poi.v(i), table) + ((k - 1) / (2 * k)) * (1 - ccl.nEx(x, n, poi.v(i), table))
 
 
 # Deferred
-def m_ax_k(x, m, v, table, k):
-    return m_ax(x, m, v, table) + ((k - 1) / (2 * k)) * ccl.nEx(x, m, v, table)
+def m_ax_k(x, m, i, table, k):
+    return m_ax(x, m, poi.v(i), table) + ((k - 1) / (2 * k)) * ccl.nEx(x, m, poi.v(i), table)
 
 
 # Temporary (n) and deferred (m)
-def m_a_xn_k(x, n, m, v, table, k):
-    return ccl.nEx(x, m, v, table) * a_xn_k(x+m, n, v, table, k)
+def m_a_xn_k(x, n, m, i, table, k):
+    return ccl.nEx(x, m, poi.v(i), table) * a_xn_k(x+m, n, poi.v(i), table, k)
 
 
 ## Life Annuities with several payment each year, due at the beginning of the period
 
 # Up to the death
-def _ax__k(x, table, v, k):
-    return _ax_(x, table, v) - (k - 1) / (2 * k)
+def _ax__k(x, table, i, k):
+    return _ax_(x, table, poi.v(i)) - (k - 1) / (2 * k)
 
 
 # Temporary
-def _a_xn__k(x, n, v, table, k):
-    return _a_xn_(x, n, v, table) - ((k - 1) / (2 * k)) * (1 - ccl.nEx(x, n, v, table))
+def _a_xn__k(x, n, i, table, k):
+    return _a_xn_(x, n, poi.v(i), table) - ((k - 1) / (2 * k)) * (1 - ccl.nEx(x, n, poi.v(i), table))
 
 
 # Deferred
-def _m_ax__k(x, m, v, table,k):
-    return _m_ax_(x, m, v, table) - ((k - 1) / (2 * k)) * ccl.nEx(x, m, v, table)
+def _m_ax__k(x, m, i, table, k):
+    return _m_ax_(x, m, poi.v(i), table) - ((k - 1) / (2 * k)) * ccl.nEx(x, m, poi.v(i), table)
 
 
 # Temporary (n) and deferred (m)
-def _m_a_xn__k(x, n, m, v, table,k):
-    return ccl.nEx(x, m, v, table) * _a_xn__k(x + m, n, v, table, k)
+def _m_a_xn__k(x, n, m, i, table, k):
+    return ccl.nEx(x, m, poi.v(i), table) * _a_xn__k(x + m, n, poi.v(i), table, k)
