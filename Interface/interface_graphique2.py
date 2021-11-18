@@ -1,7 +1,7 @@
-from tkinter import *
 import Actuariat.probabilities_one_insured as poi
 import Table.tables as table
 
+from tkinter import *
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -11,7 +11,7 @@ from kivy.uix.dropdown import DropDown
 from kivy.core.window import Window
 
 
-#finitions des fonctions
+# finitions des fonctions
 def petitFormat():
     class Application(App):
         def build(self):
@@ -80,8 +80,6 @@ def petitFormat():
             )
             self.window.add_widget(self.n)
 
-
-
             self.px = Button(
                 text="Probabilité de vivre à l'âge saisi : ",
                 bold=True,
@@ -108,27 +106,13 @@ def petitFormat():
             elif self.mainbutton.text == "TF_00_02":
                 return table.tables[3]
 
-
         def callback_px(self, instance):
             self.print_px.text = str(poi.px(int(self.age.text), self.choix_table()))
-
 
     Application().run()
 
 
 def formatNormal():
-
-
-    import Actuariat.probabilities_one_insured as poi
-    import Table.tables as table
-
-    from kivy.app import App
-    from kivy.uix.gridlayout import GridLayout
-    from kivy.uix.label import Label
-    from kivy.uix.button import Button
-    from kivy.uix.textinput import TextInput
-    from kivy.uix.dropdown import DropDown
-    from kivy.core.window import Window
     from kivy.uix.screenmanager import ScreenManager, Screen
 
     # class CheckProfil(Screen):
@@ -221,10 +205,6 @@ def formatNormal():
             )
             self.window.add_widget(self.print_qx)
 
-
-
-
-
             return self.window
 
         def choix_table(self):
@@ -244,13 +224,15 @@ def formatNormal():
 
 
 def grandFormat():
-		fen_princ.geometry('1200x800')
+    fen_princ.geometry('1200x800')
+
 
 def fondClair():
-		fen_princ.config(bg='ivory')
+    fen_princ.config(bg='ivory')
+
 
 def fondSombre():
-		fen_princ.config(bg='black')
+    fen_princ.config(bg='black')
 
 
 # Création de la fenêtre
@@ -263,30 +245,25 @@ zoneMenu = Frame(fen_princ, borderwidth=3, bg='#557788')
 zoneMenu.pack(fill=X)
 
 # Création de l'onglet Fichier
-menuAssureur = Menubutton(zoneMenu, text='Assureur', width='20', borderwidth=2, bg='gray', activebackground='darkorange',relief = RAISED)
-menuAssureur.grid(row=0,column=0)
+menuAssureur = Menubutton(zoneMenu, text='Assureur', width='20', borderwidth=2, bg='gray',
+                          activebackground='darkorange', relief=RAISED)
+menuAssureur.grid(row=0, column=0)
 
 # Création de l'onglet Affichage
-menuAssuré = Menubutton(zoneMenu, text='Assuré', width='20', borderwidth=2, bg='gray', activebackground='darkorange',relief = RAISED)
-menuAssuré.grid(row=0,column=3)
+menuAssuré = Menubutton(zoneMenu, text='Assuré', width='20', borderwidth=2, bg='gray', activebackground='darkorange',
+                        relief=RAISED)
+menuAssuré.grid(row=0, column=3)
 
 # Création d'un menu défilant
-menuDeroulant1 = Menu(menuAssureur, tearoff = 0)
-menuDeroulant1.add_command(label='Px', command = petitFormat)
-menuDeroulant1.add_command(label="qx", command = formatNormal)
-menuDeroulant1.add_command(label="dx", command = grandFormat)
-menuDeroulant1.add_command(label="npx", command = fondClair)
-menuDeroulant1.add_command(label="ndx", command = fondSombre)
-
+menuDeroulant1 = Menu(menuAssureur, tearoff=0)
+menuDeroulant1.add_command(label='px', command=petitFormat)
+menuDeroulant1.add_command(label="qx", command=formatNormal)
+menuDeroulant1.add_command(label="dx", command=grandFormat)
+menuDeroulant1.add_command(label="npx", command=fondClair)
+menuDeroulant1.add_command(label="nqx", command=fondSombre)
 
 # Attribution du menu déroulant au menu Affichage
 menuAssureur.configure(menu=menuDeroulant1)
 
-
 # Lancement de la surveillance sur la widget
 fen_princ.mainloop()
-
-
-
-
-

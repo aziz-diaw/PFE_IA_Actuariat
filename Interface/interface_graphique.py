@@ -9,7 +9,6 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
 from kivy.core.window import Window
 
-from kivy.uix.screenmanager import ScreenManager, Screen
 
 class Application(App):
     def build(self):
@@ -23,7 +22,6 @@ class Application(App):
             text="Choix de la table de mortalité",
             font_size=20,
         )
-        self.window.add_widget(self.choice)
 
         ### liste des tables
         dropdown = DropDown()
@@ -43,19 +41,16 @@ class Application(App):
         tab4.bind(on_release=lambda tab4: dropdown.select(tab4.text))
         dropdown.add_widget(tab4)
 
-
         self.mainbutton = Button(text="Tables")
         self.mainbutton.bind(on_release=dropdown.open)
         dropdown.bind(on_select=lambda instance, x: setattr(self.mainbutton, 'text', x))
 
-        self.window.add_widget(self.mainbutton)
         ###
 
         self.user = Label(
             text="Saisir l'âge : ",
             font_size=20,
         )
-        self.window.add_widget(self.user)
 
         self.age = TextInput(
             multiline=False,
@@ -63,13 +58,11 @@ class Application(App):
             size_hint=(0.5, 0.5),
             input_filter="int"
         )
-        self.window.add_widget(self.age)
 
         self.saisie_n = Label(
             text="Saisir le nombre d'année n à ajouter : ",
             font_size=20,
         )
-        self.window.add_widget(self.saisie_n)
 
         self.n = TextInput(
             multiline=False,
@@ -77,7 +70,6 @@ class Application(App):
             size_hint=(0.5, 0.5),
             input_filter="int"
         )
-        self.window.add_widget(self.n)
 
         self.qx = Button(
             text="Probabilité de mourir à l'âge saisi : ",
@@ -85,13 +77,11 @@ class Application(App):
             background_color=(0.0, 0.0, 1, 1)
         )
         self.qx.bind(on_press=self.callback_qx)
-        self.window.add_widget(self.qx)
 
         self.print_qx = Label(
             text="?",
             font_size=20
         )
-        self.window.add_widget(self.print_qx)
 
         self.px = Button(
             text="Probabilité de vivre à l'âge saisi : ",
@@ -99,13 +89,11 @@ class Application(App):
             background_color=(1, 0.0, 0.0, 1)
         )
         self.px.bind(on_press=self.callback_px)
-        self.window.add_widget(self.px)
 
         self.print_px = Label(
             text="?",
             font_size=20
         )
-        self.window.add_widget(self.print_px)
 
         self.dx = Button(
             text="nombre de personne décédé durant l'âge saisi: ",
@@ -113,13 +101,11 @@ class Application(App):
             background_color=(0, 1, 0, 1)
         )
         self.dx.bind(on_press=self.callback_dx)
-        self.window.add_widget(self.dx)
 
         self.print_dx = Label(
             text="?",
             font_size=20
         )
-        self.window.add_widget(self.print_dx)
 
         self.npx = Button(
             text="probabilité de vivre entre l'âge x et l'âge x+n ",
@@ -127,13 +113,11 @@ class Application(App):
             background_color=(0.7, 0.21, 0.9, 1)
         )
         self.npx.bind(on_press=self.callback_npx)
-        self.window.add_widget(self.npx)
 
         self.print_npx = Label(
             text="?",
             font_size=20
         )
-        self.window.add_widget(self.print_npx)
 
         self.nqx = Button(
             text="probabilité de mourir entre l'âge x et l'âge x+n ",
@@ -141,12 +125,28 @@ class Application(App):
             background_color=(0.5, 0.6, 0.3, 1)
         )
         self.nqx.bind(on_press=self.callback_nqx)
-        self.window.add_widget(self.nqx)
+
 
         self.print_nqx = Label(
             text="?",
             font_size=20
         )
+
+        self.window.add_widget(self.choice)
+        self.window.add_widget(self.mainbutton)
+        self.window.add_widget(self.user)
+        self.window.add_widget(self.age)
+        self.window.add_widget(self.saisie_n)
+        self.window.add_widget(self.n)
+        self.window.add_widget(self.qx)
+        self.window.add_widget(self.print_qx)
+        self.window.add_widget(self.px)
+        self.window.add_widget(self.print_px)
+        self.window.add_widget(self.dx)
+        self.window.add_widget(self.print_dx)
+        self.window.add_widget(self.npx)
+        self.window.add_widget(self.print_npx)
+        self.window.add_widget(self.nqx)
         self.window.add_widget(self.print_nqx)
 
         return self.window
