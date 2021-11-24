@@ -150,6 +150,14 @@ class Application(App):
         fct14.bind(on_release=lambda fct14: assu_fct.select(fct14.text))
         assu_fct.add_widget(fct14)
 
+        fct15 = Button(text="m_a_xn", size_hint_y=None, height=44)
+        fct15.bind(on_release=lambda fct15: assu_fct.select(fct15.text))
+        assu_fct.add_widget(fct15)
+
+        fct16 = Button(text="_a_xn_", size_hint_y=None, height=44)
+        fct16.bind(on_release=lambda fct14: assu_fct.select(fct16.text))
+        assu_fct.add_widget(fct16)
+
         return assu_fct
 
     def liste_insurance_case_death(self,assu_fct):
@@ -779,6 +787,27 @@ class Application(App):
                     else:
                         self.resultat_assureur.text = str(
                             lan._m_a_xn__k(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.k.text)))
+                if self.fonction_assureur.text == "m_a_xn":
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.age.text) + int(self.m.text) + int(self.n.text) + 1 > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.m_a_xn(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "_a_xn_":
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._a_xn_(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
         else: # add catégorie Client
             pass
 
