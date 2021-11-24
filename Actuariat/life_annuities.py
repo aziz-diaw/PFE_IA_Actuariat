@@ -5,8 +5,6 @@ import numpy as np
 ## Life Annuities due at the End of year
 
 # Up to the death
-import Table.tables
-
 
 def ax(x, table, i):
     return ccl.Nx(x + 1, table, poi.v(i)) / ccl.Dx(x, poi.v(i), table)
@@ -106,4 +104,4 @@ def check_function_lan(x, n, m, i, table):
     d = _m_ax_(x, n, i, table) + _a_xn_(x, n, i, table)
     resu3 = np.allclose(e, d)
 
-    return resu1 == resu2 == resu3
+    return resu1 == resu2 == resu3 == True

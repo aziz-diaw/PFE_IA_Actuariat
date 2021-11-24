@@ -65,8 +65,7 @@ def check_function_poi(x, n, m, table):
     f = npx(x, m, table) * nqx(x + m, n, table)
     resu3 = np.allclose(e, f)
 
-    return resu1 == resu2 == resu3
+    return resu1 == resu2 == resu3 == True  # true car si les 3 sont faux ça return true
 
 
-#print(dx(-15,Table.tables.TD_88_90))
 print(Table.tables.TD_88_90[-15],Table.tables.TD_88_90[92] )
