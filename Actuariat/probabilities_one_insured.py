@@ -1,5 +1,11 @@
+import numpy as np
+
+import Table.tables
+
+
 def v(i):
     return 1 / (1 + i)
+
 
 # Death between ages x and x + 1
 def qx(x, table):
@@ -43,4 +49,24 @@ def m_qx(x, m, table):
 
 # Alive until m but not in m+n
 def m_n_qx(x, n, m, table):
-    return px(x, m, table) - npx(x, m + n, table)
+    return npx(x, m, table) - npx(x, m + n, table)
+
+
+def check_function_poi(x, n, m, table):
+    a = npx(x, m + n, table)
+    b = npx(x, m, table) * npx(x + m, n, table)
+    resu1 = np.allclose(a, b)
+
+    c = m_qx(x, m, table)
+    d = npx(x, m, table) * qx(x + m, table)
+    resu2 = np.allclose(c, d)
+
+    e = m_n_qx(x, n, m, table)
+    f = npx(x, m, table) * nqx(x + m, n, table)
+    resu3 = np.allclose(e, f)
+
+    return resu1 == resu2 == resu3
+
+
+#print(dx(-15,Table.tables.TD_88_90))
+print(Table.tables.TD_88_90[-15],Table.tables.TD_88_90[92] )

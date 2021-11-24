@@ -1,6 +1,6 @@
-import commutation_case_life as ccl
-import commutation_case_death as ccd
-import probabilities_one_insured as poi
+import Actuariat.commutation_case_life as ccl
+import Actuariat.commutation_case_death as ccd
+import Actuariat.probabilities_one_insured as poi
 
 
 # Whole Life

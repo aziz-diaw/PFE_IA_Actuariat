@@ -1,4 +1,4 @@
-import probabilities_one_insured as poi
+import Actuariat.probabilities_one_insured as poi
 
 
 def Dx(x, i, table):
@@ -17,7 +17,7 @@ def Sx(x, table, i):
     S = 0
     w = len(table) - 1
     for j in range(0, w - x + 1):
-        S += Nx(x + j, poi.v(i), table)
+        S += Nx(x + j, table, poi.v(i))
     return S
 
 
@@ -26,5 +26,4 @@ def nEx(x, n, i, table):
     return Dx(x + n, poi.v(i), table) / Dx(x, poi.v(i), table)
 
 
-def v(i):
-    return 1 / (1 + i)
+

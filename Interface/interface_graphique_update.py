@@ -1,4 +1,8 @@
 import Actuariat.probabilities_one_insured as poi
+import Actuariat.commutation_case_death as ccd
+import Actuariat.commutation_case_life as ccl
+import Actuariat.insurance_case_death as icd
+import Actuariat.life_annuities as lan
 import Table.tables as table
 
 from kivy.app import App
@@ -42,6 +46,10 @@ class Application(App):
         fct7.bind(on_release=lambda fct7: assu_fct.select(fct7.text))
         assu_fct.add_widget(fct7)
 
+        fct8 = Button(text="m_n_qx", size_hint_y=None, height=44)
+        fct8.bind(on_release=lambda fct8: assu_fct.select(fct8.text))
+        assu_fct.add_widget(fct8)
+
         return assu_fct
 
     def liste_commutation_life(self, assu_fct):
@@ -63,12 +71,120 @@ class Application(App):
         fct4.bind(on_release=lambda fct4: assu_fct.select(fct4.text))
         assu_fct.add_widget(fct4)
 
+
+        return assu_fct
+
+    def liste_commutation_death(self, assu_fct):
+        assu_fct = DropDown()
+
+        fct1 = Button(text="Cx", size_hint_y=None, height=44)
+        fct1.bind(on_release=lambda fct1: assu_fct.select(fct1.text))
+        assu_fct.add_widget(fct1)
+
+        fct2 = Button(text="Mx", size_hint_y=None, height=44)
+        fct2.bind(on_release=lambda fct2: assu_fct.select(fct2.text))
+        assu_fct.add_widget(fct2)
+
+        fct3 = Button(text="Rx", size_hint_y=None, height=44)
+        fct3.bind(on_release=lambda fct3: assu_fct.select(fct3.text))
+        assu_fct.add_widget(fct3)
+
+        return assu_fct
+
+    def liste_life_annuities(self,assu_fct):
+        assu_fct = DropDown()
+
+        fct1 = Button(text="ax", size_hint_y=None, height=44)
+        fct1.bind(on_release=lambda fct1: assu_fct.select(fct1.text))
+        assu_fct.add_widget(fct1)
+
+        fct2 = Button(text="a_xn", size_hint_y=None, height=44)
+        fct2.bind(on_release=lambda fct2: assu_fct.select(fct2.text))
+        assu_fct.add_widget(fct2)
+
+        fct3 = Button(text="m_ax", size_hint_y=None, height=44)
+        fct3.bind(on_release=lambda fct3: assu_fct.select(fct3.text))
+        assu_fct.add_widget(fct3)
+
+        fct4 = Button(text="_ax_", size_hint_y=None, height=44)
+        fct4.bind(on_release=lambda fct4: assu_fct.select(fct4.text))
+        assu_fct.add_widget(fct4)
+
+        fct5 = Button(text="_m_ax_", size_hint_y=None, height=44)
+        fct5.bind(on_release=lambda fct5: assu_fct.select(fct5.text))
+        assu_fct.add_widget(fct5)
+
+        fct6 = Button(text="_m_a_xn_", size_hint_y=None, height=44)
+        fct6.bind(on_release=lambda fct6: assu_fct.select(fct6.text))
+        assu_fct.add_widget(fct6)
+
+        fct7 = Button(text="ax_k", size_hint_y=None, height=44)
+        fct7.bind(on_release=lambda fct7: assu_fct.select(fct7.text))
+        assu_fct.add_widget(fct7)
+
+        fct8 = Button(text="a_xn_k", size_hint_y=None, height=44)
+        fct8.bind(on_release=lambda fct8: assu_fct.select(fct8.text))
+        assu_fct.add_widget(fct8)
+
+        fct9 = Button(text="m_ax_k", size_hint_y=None, height=44)
+        fct9.bind(on_release=lambda fct9: assu_fct.select(fct9.text))
+        assu_fct.add_widget(fct9)
+
+        fct10 = Button(text="m_a_xn_k", size_hint_y=None, height=44)
+        fct10.bind(on_release=lambda fct10: assu_fct.select(fct10.text))
+        assu_fct.add_widget(fct10)
+
+        fct11 = Button(text="_ax__k", size_hint_y=None, height=44)
+        fct11.bind(on_release=lambda fct11: assu_fct.select(fct11.text))
+        assu_fct.add_widget(fct11)
+
+        fct12 = Button(text="_a_xn__k", size_hint_y=None, height=44)
+        fct12.bind(on_release=lambda fct12: assu_fct.select(fct12.text))
+        assu_fct.add_widget(fct12)
+
+        fct13 = Button(text="_m_ax__k", size_hint_y=None, height=44)
+        fct13.bind(on_release=lambda fct13: assu_fct.select(fct13.text))
+        assu_fct.add_widget(fct13)
+
+        fct14 = Button(text="_m_a_xn__k", size_hint_y=None, height=44)
+        fct14.bind(on_release=lambda fct14: assu_fct.select(fct14.text))
+        assu_fct.add_widget(fct14)
+
+        return assu_fct
+
+    def liste_insurance_case_death(self,assu_fct):
+        assu_fct = DropDown()
+
+        fct1 = Button(text="Ax", size_hint_y=None, height=44)
+        fct1.bind(on_release=lambda fct1: assu_fct.select(fct1.text))
+        assu_fct.add_widget(fct1)
+
+        fct2 = Button(text="nAx", size_hint_y=None, height=44)
+        fct2.bind(on_release=lambda fct2: assu_fct.select(fct2.text))
+        assu_fct.add_widget(fct2)
+
+        fct3 = Button(text="m_n_Ax", size_hint_y=None, height=44)
+        fct3.bind(on_release=lambda fct3: assu_fct.select(fct3.text))
+        assu_fct.add_widget(fct3)
+
+        fct4 = Button(text="m_Ax", size_hint_y=None, height=44)
+        fct4.bind(on_release=lambda fct4: assu_fct.select(fct4.text))
+        assu_fct.add_widget(fct4)
+
+        fct5 = Button(text="n_IA_x", size_hint_y=None, height=44)
+        fct5.bind(on_release=lambda fct5: assu_fct.select(fct5.text))
+        assu_fct.add_widget(fct5)
+
+        fct6 = Button(text="n_DA_x", size_hint_y=None, height=44)
+        fct6.bind(on_release=lambda fct6: assu_fct.select(fct6.text))
+        assu_fct.add_widget(fct6)
+
         return assu_fct
 
     def build(self):
         self.window = GridLayout()
         self.window.cols = 3
-        self.window.rows = 10
+        #self.window.rows = 10
         self.table = table.tables
         Window.clearcolor = (18 / 255, 71 / 255, 159 / 255, 1)
 
@@ -170,6 +286,23 @@ class Application(App):
             padding_y=(20, 20),
             size_hint=(0.5, 0.5),
             input_filter="float"
+        )
+
+        self.saisie_k = Label(
+            text="Saisie du nombre de paiements par année",
+            font_size=20,
+        )
+
+        self.text_k = Label(
+            text=" k : ",
+            font_size=20,
+        )
+
+        self.k = TextInput(
+            multiline=False,
+            padding_y=(20, 20),
+            size_hint=(0.5, 0.5),
+            input_filter="int"
         )
 
         self.vision = Label(
@@ -300,6 +433,10 @@ class Application(App):
         self.window.add_widget(self.text_i)
         self.window.add_widget(self.i)
 
+        self.window.add_widget(self.saisie_k)
+        self.window.add_widget(self.text_k)
+        self.window.add_widget(self.k)
+
         self.window.add_widget(self.vision)
         self.window.add_widget(self.text_assureur)
         self.window.add_widget(self.text_client)
@@ -315,14 +452,6 @@ class Application(App):
         return self.window
 
 
-    def set_name(self, instance):
-        print(self.cat1.text)
-        #self.ess.text = "Probabilities one insured"
-        self.cat1.text = "Probabilities one insured"
-        #self.categorie_assureur.text = self.ess.text
-
-
-
     def buton_creation(self):
         assu_fct = DropDown()
 
@@ -330,6 +459,12 @@ class Application(App):
             assu_fct = self.liste_proba_on_insured(assu_fct)
         if self.categorie_assureur.text == "Commutation case life":
             assu_fct = self.liste_commutation_life(assu_fct)
+        if self.categorie_assureur.text == "Commutation case death":
+            assu_fct = self.liste_commutation_death(assu_fct)
+        if self.categorie_assureur.text == "Life annuities":
+            assu_fct = self.liste_life_annuities(assu_fct)
+        if self.categorie_assureur.text =="Insurance case death" :
+            assu_fct = self.liste_insurance_case_death(assu_fct)
 
         fonction_assureur = Button(text="Cliquer pour choisir la fonction", font_size=15)
         fonction_assureur.bind(on_release=assu_fct.open)
@@ -343,7 +478,7 @@ class Application(App):
 
 
     def remove(self,instance):
-        self.remove(self.fonction_assureur)
+        self.window.remove_widget(self.fonction_assureur)
 
 
     def choix_table(self):
@@ -356,22 +491,119 @@ class Application(App):
         elif self.mainbutton.text == "TF_00_02":
             return table.tables[3]
 
+    def check_param(self):
+        if  int(self.age.text) > len(self.choix_table())-1 :
+            pass
+
     def callback(self, instance):
         if self.text_assureur.text == "Assureur":
             if self.categorie_assureur.text =="Probabilities one insured":
-                pass
-            elif self.text_assureur.text == "Commutation case life":
-                pass
-            elif self.text_assureur.text == "Commutation case death":
-                pass
-            elif self.text_assureur.text == "Insurance case death":
-                pass
-            elif self.text_assureur.text == "Life annuities":
-                pass
-
+                if self.fonction_assureur.text == "px":
+                    self.resultat_assureur.text = str(poi.px(int(self.age.text), self.choix_table()))
+                if self.fonction_assureur.text =="qx":
+                    self.resultat_assureur.text = str(poi.qx(int(self.age.text), self.choix_table()))
+                if self.fonction_assureur.text =="v":
+                    self.resultat_assureur.text = str(poi.v(float(self.i.text)))
+                if self.fonction_assureur.text == "dx":
+                    self.resultat_assureur.text = str(poi.dx(int(self.age.text), self.choix_table())) + " morts"
+                if self.fonction_assureur.text == "npx":
+                    self.resultat_assureur.text = str(poi.npx(int(self.age.text),int(self.n.text), self.choix_table()))
+                if self.fonction_assureur.text == "nqx":
+                    self.resultat_assureur.text = str(poi.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
+                if self.fonction_assureur.text == "m_qx":
+                    self.resultat_assureur.text = str(
+                        poi.m_qx(int(self.age.text), int(self.m.text), self.choix_table()))
+                if self.fonction_assureur.text == "m_n_qx":
+                    self.resultat_assureur.text = str(
+                        poi.m_n_qx(int(self.age.text),int(self.n.text) ,int(self.m.text), self.choix_table()))
+            elif self.categorie_assureur.text == "Commutation case death":
+                if self.fonction_assureur.text == "Cx":
+                    self.resultat_assureur.text = str(ccd.Cx(int(self.age.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "Mx":
+                    self.resultat_assureur.text = str(ccd.Mx(int(self.age.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "Rx":
+                    self.resultat_assureur.text = str(ccd.Rx(int(self.age.text),float(self.i.text),self.choix_table()))
+            elif self.categorie_assureur.text == "Commutation case life":
+                if self.fonction_assureur.text == "Dx":
+                    self.resultat_assureur.text = str(ccl.Dx(int(self.age.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "Nx":
+                    self.resultat_assureur.text = str(ccl.Nx(int(self.age.text),self.choix_table(),float(self.i.text)))
+                if self.fonction_assureur.text == "Sx":
+                    self.resultat_assureur.text = str(ccl.Sx(int(self.age.text),self.choix_table(),float(self.i.text)))
+                if self.fonction_assureur.text == "nEx":
+                    self.resultat_assureur.text = str(
+                        ccl.nEx(int(self.age.text), int(self.n.text),float(self.i.text),self.choix_table()))
+            elif self.categorie_assureur.text == "Insurance case death":
+                if self.fonction_assureur.text == "Ax":
+                    self.resultat_assureur.text = str(
+                        icd.Ax(int(self.age.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "nAx":
+                    self.resultat_assureur.text = str(
+                        icd.nAx(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "m_n_Ax":
+                    self.resultat_assureur.text = str(
+                        icd.m_n_Ax(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "m_Ax":
+                    self.resultat_assureur.text = str(
+                        icd.m_Ax(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "n_IA_x":
+                    self.resultat_assureur.text = str(
+                        icd.n_IA_x(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))       #check this formule => does a negative value is possible ?
+                if self.fonction_assureur.text == "n_DA_x":
+                    self.resultat_assureur.text = str(
+                        icd.n_DA_x(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
+            elif self.categorie_assureur.text == "Life annuities":
+                if self.fonction_assureur.text == "ax":
+                    self.resultat_assureur.text = str(
+                        lan.ax(int(self.age.text), self.choix_table(), float(self.i.text)))
+                if self.fonction_assureur.text == "a_xn":
+                    self.resultat_assureur.text = str(
+                        lan.a_xn(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "m_ax":
+                    self.resultat_assureur.text = str(
+                        lan.m_ax(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "_ax_":
+                    self.resultat_assureur.text = str(
+                        lan._ax_(int(self.age.text), self.choix_table(), float(self.i.text)))
+                if self.fonction_assureur.text == "_m_ax_":
+                    self.resultat_assureur.text = str(
+                        lan._m_ax_(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "_m_a_xn_":
+                    self.resultat_assureur.text = str(
+                        lan._m_a_xn_(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "ax_k":
+                    self.resultat_assureur.text = str(
+                        lan.ax_k(int(self.age.text), self.choix_table(), float(self.i.text),int(self.k.text)))
+                if self.fonction_assureur.text == "a_xn_k":
+                    self.resultat_assureur.text = str(
+                        lan.a_xn_k(int(self.age.text),int(self.n.text), float(self.i.text),self.choix_table(), int(self.k.text)))
+                if self.fonction_assureur.text == "m_ax_k":
+                    self.resultat_assureur.text = str(
+                        lan.m_ax_k(int(self.age.text),int(self.m.text), float(self.i.text),self.choix_table(), int(self.k.text)))
+                if self.fonction_assureur.text == "m_a_xn_k":
+                    self.resultat_assureur.text = str(
+                        lan.m_a_xn_k(int(self.age.text), int(self.n.text), int(self.m.text), float(self.i.text),self.choix_table(), int(self.k.text)))
+                if self.fonction_assureur.text == "_ax__k":
+                    self.resultat_assureur.text = str(
+                        lan._ax__k(int(self.age.text),self.choix_table(),float(self.i.text),int(self.k.text)))
+                if self.fonction_assureur.text == "_a_xn__k":
+                    self.resultat_assureur.text = str(
+                        lan._a_xn__k(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table(),int(self.k.text)))
+                if self.fonction_assureur.text == "_m_ax__k":
+                    self.resultat_assureur.text = str(
+                        lan._m_ax__k(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.k.text)))
+                if self.fonction_assureur.text == "_m_a_xn__k":
+                    self.resultat_assureur.text = str(
+                        lan._m_a_xn__k(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.k.text)))
         else: # add catégorie Client
             pass
 
+x = 50
+n = 5
+m = 5
+tab = table.tables[0]
+i = 0.2
 
-if __name__ == "__main__":
-    Application().run()
+if poi.check_function_poi(x,n,m,tab) == lan.check_function_lan(x,n,m,i,tab) == True :
+    if __name__ == "__main__":
+        Application().run()
