@@ -1,0 +1,34 @@
+WindowManager:
+    CheckProfil:
+    Application:
+    Profil_1:
+
+
+
+<CheckProfil>:
+    name: "main"
+
+    GridLayout:
+        cols:1
+
+        Button:
+            text: "Choice"
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+
+
+<Application>:
+    name: "second"
+
+
+
+
+<Profil_1>:
+    name: "third"
+
+    Button:
+        text: "Go_Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"

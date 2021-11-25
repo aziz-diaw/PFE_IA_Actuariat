@@ -1,3 +1,5 @@
+from kivy.lang import Builder
+
 import Actuariat.probabilities_one_insured as poi
 import Table.tables as table
 
@@ -8,6 +10,18 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
 from kivy.core.window import Window
+from kivy.uix.screenmanager import ScreenManager,  Screen
+
+
+#class CheckProfil(Screen):
+   #pass
+
+#class Profil_1(Screen):
+    #pass
+
+#class WindowManager(ScreenManager):
+    #pass
+
 
 
 class Application(App):
@@ -16,7 +30,7 @@ class Application(App):
         self.window.cols = 2
         self.window.rows = 8
         self.table = table.tables
-        Window.clearcolor = (126/255, 147/255, 97/255,1)
+        Window.clearcolor = (126/255, 147/255, 97/255, 1)
 
         self.choice = Label(
             text="Choix de la table de mortalité",
@@ -190,6 +204,9 @@ class Application(App):
         else:
             self.print_nqx.text = str(poi.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
 
+
+
+#kv= Builder.load_file("navigate.kv")
 
 if __name__ == "__main__":
     Application().run()
