@@ -150,6 +150,14 @@ class Application(App):
         fct14.bind(on_release=lambda fct14: assu_fct.select(fct14.text))
         assu_fct.add_widget(fct14)
 
+        fct15 = Button(text="m_a_xn", size_hint_y=None, height=44)
+        fct15.bind(on_release=lambda fct15: assu_fct.select(fct15.text))
+        assu_fct.add_widget(fct15)
+
+        fct16 = Button(text="_a_xn_", size_hint_y=None, height=44)
+        fct16.bind(on_release=lambda fct14: assu_fct.select(fct16.text))
+        assu_fct.add_widget(fct16)
+
         return assu_fct
 
     def liste_insurance_case_death(self,assu_fct):
@@ -272,7 +280,7 @@ class Application(App):
         )
 
         self.saisie_i = Label(
-            text="Saisie du taux   ",
+            text="Saisie du taux (entre 0 et 1) ",
             font_size=20,
         )
 
@@ -469,6 +477,7 @@ class Application(App):
         fonction_assureur = Button(text="Cliquer pour choisir la fonction", font_size=15)
         fonction_assureur.bind(on_release=assu_fct.open)
         assu_fct.bind(on_select=lambda instance, x: setattr(fonction_assureur, 'text', x))
+
         return fonction_assureur,assu_fct
 
     def add_button(self, instance):
@@ -491,110 +500,314 @@ class Application(App):
         elif self.mainbutton.text == "TF_00_02":
             return table.tables[3]
 
-    def check_param(self):
-        if  int(self.age.text) > len(self.choix_table())-1 :
-            pass
+    # def check_param(self):
+    #     if  int(self.age.text) > len(self.choix_table())-1 :
+    #         pass
 
-    def callback(self, instance):
+    def callback(self, instance):  # add le check des params ds cette fonction
         if self.text_assureur.text == "Assureur":
             if self.categorie_assureur.text =="Probabilities one insured":
                 if self.fonction_assureur.text == "px":
-                    self.resultat_assureur.text = str(poi.px(int(self.age.text), self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(poi.px(int(self.age.text), self.choix_table()))
                 if self.fonction_assureur.text =="qx":
-                    self.resultat_assureur.text = str(poi.qx(int(self.age.text), self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(poi.qx(int(self.age.text), self.choix_table()))
                 if self.fonction_assureur.text =="v":
-                    self.resultat_assureur.text = str(poi.v(float(self.i.text)))
+                    if (float(self.i.text) < 0 ) | (float(self.i.text) >  1 ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(poi.v(float(self.i.text)))
                 if self.fonction_assureur.text == "dx":
-                    self.resultat_assureur.text = str(poi.dx(int(self.age.text), self.choix_table())) + " morts"
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(poi.dx(int(self.age.text), self.choix_table())) + " morts"
                 if self.fonction_assureur.text == "npx":
-                    self.resultat_assureur.text = str(poi.npx(int(self.age.text),int(self.n.text), self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1 ) | (int(self.n.text) < 0 )| (int(self.n.text) > len(self.choix_table()) - 1 ) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(poi.npx(int(self.age.text),int(self.n.text), self.choix_table()))
                 if self.fonction_assureur.text == "nqx":
-                    self.resultat_assureur.text = str(poi.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (int(self.n.text) < 0 )|(int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1 ) |(int(self.n.text) > len(self.choix_table()) - 1 ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(poi.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
                 if self.fonction_assureur.text == "m_qx":
-                    self.resultat_assureur.text = str(
-                        poi.m_qx(int(self.age.text), int(self.m.text), self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) |(int(self.m.text) > len(self.choix_table()) - 1 ) |(int(self.m.text)+1 > len(self.choix_table()) - 1 ) | (int(self.m.text) < 0) |  (int(self.m.text) > len(self.choix_table()) - 1) | (int(self.m.text) + int(self.age.text)+1 > len(self.choix_table()) - 1):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            poi.m_qx(int(self.age.text), int(self.m.text), self.choix_table()))
                 if self.fonction_assureur.text == "m_n_qx":
-                    self.resultat_assureur.text = str(
-                        poi.m_n_qx(int(self.age.text),int(self.n.text) ,int(self.m.text), self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) |(int(self.m.text) > len(self.choix_table()) - 1 ) |(int(self.m.text)+int(self.n.text) > len(self.choix_table()) - 1 ) | (int(self.m.text) < 0) |  (int(self.m.text) > len(self.choix_table()) - 1) | (int(self.m.text) + int(self.age.text)+int(self.n.text) > len(self.choix_table()) - 1) |(int(self.n.text) < 0) |  (int(self.n.text) > len(self.choix_table()) - 1):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            poi.m_n_qx(int(self.age.text),int(self.n.text) ,int(self.m.text), self.choix_table()))
             elif self.categorie_assureur.text == "Commutation case death":
                 if self.fonction_assureur.text == "Cx":
-                    self.resultat_assureur.text = str(ccd.Cx(int(self.age.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (float(self.i.text) < 0 ) | (float(self.i.text) > 1) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(ccd.Cx(int(self.age.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "Mx":
-                    self.resultat_assureur.text = str(ccd.Mx(int(self.age.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (float(self.i.text) < 0 ) | (float(self.i.text) > 1) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(ccd.Mx(int(self.age.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "Rx":
-                    self.resultat_assureur.text = str(ccd.Rx(int(self.age.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (float(self.i.text) < 0 ) | (float(self.i.text) > 1) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(ccd.Rx(int(self.age.text),float(self.i.text),self.choix_table()))
             elif self.categorie_assureur.text == "Commutation case life":
                 if self.fonction_assureur.text == "Dx":
-                    self.resultat_assureur.text = str(ccl.Dx(int(self.age.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (float(self.i.text) < 0 ) | (float(self.i.text) > 1) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(ccl.Dx(int(self.age.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "Nx":
-                    self.resultat_assureur.text = str(ccl.Nx(int(self.age.text),self.choix_table(),float(self.i.text)))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (float(self.i.text) < 0 ) | (float(self.i.text) > 1) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(ccl.Nx(int(self.age.text),self.choix_table(),float(self.i.text)))
                 if self.fonction_assureur.text == "Sx":
-                    self.resultat_assureur.text = str(ccl.Sx(int(self.age.text),self.choix_table(),float(self.i.text)))
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (float(self.i.text) < 0 ) | (float(self.i.text) > 1) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(ccl.Sx(int(self.age.text),self.choix_table(),float(self.i.text)))
                 if self.fonction_assureur.text == "nEx":
-                    self.resultat_assureur.text = str(
+                    if (int(self.age.text) < 0 ) | (int(self.age.text) > len(self.choix_table()) - 1 ) | (float(self.i.text) < 0 ) | (float(self.i.text) > 1) | (int(self.n.text) < 0 )  | (int(self.n.text) > len(self.choix_table()) - 1 ) |  (int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1 )  :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
                         ccl.nEx(int(self.age.text), int(self.n.text),float(self.i.text),self.choix_table()))
             elif self.categorie_assureur.text == "Insurance case death":
                 if self.fonction_assureur.text == "Ax":
-                    self.resultat_assureur.text = str(
-                        icd.Ax(int(self.age.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            icd.Ax(int(self.age.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "nAx":
-                    self.resultat_assureur.text = str(
-                        icd.nAx(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
+                            int(self.n.text)+ int(self.age.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            icd.nAx(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "m_n_Ax":
-                    self.resultat_assureur.text = str(
-                        icd.m_n_Ax(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
+                            int(self.n.text)+ int(self.age.text) > len(self.choix_table()) - 1) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1 )| (
+                            int(self.n.text) + int(self.age.text) +  int(self.m.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            icd.m_n_Ax(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "m_Ax":
-                    self.resultat_assureur.text = str(
-                        icd.m_Ax(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
+                            int(self.m.text)+ int(self.age.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            icd.m_Ax(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "n_IA_x":
-                    self.resultat_assureur.text = str(
-                        icd.n_IA_x(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))       #check this formule => does a negative value is possible ?
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
+                            int(self.n.text)+ int(self.age.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            icd.n_IA_x(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))       #check this formule => does a negative value is possible ?
                 if self.fonction_assureur.text == "n_DA_x":
-                    self.resultat_assureur.text = str(
-                        icd.n_DA_x(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
+                            int(self.m.text)+ int(self.age.text) + 1  > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else :
+                        self.resultat_assureur.text = str(
+                            icd.n_DA_x(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
             elif self.categorie_assureur.text == "Life annuities":
                 if self.fonction_assureur.text == "ax":
-                    self.resultat_assureur.text = str(
-                        lan.ax(int(self.age.text), self.choix_table(), float(self.i.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.age.text) + 1 > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.ax(int(self.age.text), self.choix_table(), float(self.i.text)))
                 if self.fonction_assureur.text == "a_xn":
-                    self.resultat_assureur.text = str(
-                        lan.a_xn(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
+                            int(self.n.text) + int(self.age.text) + 1 > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.a_xn(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "m_ax":
-                    self.resultat_assureur.text = str(
-                        lan.m_ax(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
+                            int(self.m.text) + int(self.age.text) + 1 > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.m_ax(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "_ax_":
-                    self.resultat_assureur.text = str(
-                        lan._ax_(int(self.age.text), self.choix_table(), float(self.i.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) :
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._ax_(int(self.age.text), self.choix_table(), float(self.i.text)))
                 if self.fonction_assureur.text == "_m_ax_":
-                    self.resultat_assureur.text = str(
-                        lan._m_ax_(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
+                            int(self.m.text) + int(self.age.text)  > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._m_ax_(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "_m_a_xn_":
-                    self.resultat_assureur.text = str(
-                        lan._m_a_xn_(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
+                            int(self.m.text) + int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._m_a_xn_(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
                 if self.fonction_assureur.text == "ax_k":
-                    self.resultat_assureur.text = str(
-                        lan.ax_k(int(self.age.text), self.choix_table(), float(self.i.text),int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.ax_k(int(self.age.text), self.choix_table(), float(self.i.text),int(self.k.text)))
                 if self.fonction_assureur.text == "a_xn_k":
-                    self.resultat_assureur.text = str(
-                        lan.a_xn_k(int(self.age.text),int(self.n.text), float(self.i.text),self.choix_table(), int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12  )| (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.a_xn_k(int(self.age.text),int(self.n.text), float(self.i.text),self.choix_table(), int(self.k.text)))
                 if self.fonction_assureur.text == "m_ax_k":
-                    self.resultat_assureur.text = str(
-                        lan.m_ax_k(int(self.age.text),int(self.m.text), float(self.i.text),self.choix_table(), int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12  )| (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.m_ax_k(int(self.age.text),int(self.m.text), float(self.i.text),self.choix_table(), int(self.k.text)))
                 if self.fonction_assureur.text == "m_a_xn_k":
-                    self.resultat_assureur.text = str(
-                        lan.m_a_xn_k(int(self.age.text), int(self.n.text), int(self.m.text), float(self.i.text),self.choix_table(), int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1 )| (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1 )| (
+                            int(self.age.text) + int(self.m.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.m_a_xn_k(int(self.age.text), int(self.n.text), int(self.m.text), float(self.i.text),self.choix_table(), int(self.k.text)))
                 if self.fonction_assureur.text == "_ax__k":
-                    self.resultat_assureur.text = str(
-                        lan._ax__k(int(self.age.text),self.choix_table(),float(self.i.text),int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._ax__k(int(self.age.text),self.choix_table(),float(self.i.text),int(self.k.text)))
                 if self.fonction_assureur.text == "_a_xn__k":
-                    self.resultat_assureur.text = str(
-                        lan._a_xn__k(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table(),int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12  )| (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._a_xn__k(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table(),int(self.k.text)))
                 if self.fonction_assureur.text == "_m_ax__k":
-                    self.resultat_assureur.text = str(
-                        lan._m_ax__k(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12  )| (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._m_ax__k(int(self.age.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.k.text)))
                 if self.fonction_assureur.text == "_m_a_xn__k":
-                    self.resultat_assureur.text = str(
-                        lan._m_a_xn__k(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.k.text)))
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.k.text) < 1) | (int(self.k.text) > 12  )| (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.age.text) + int(self.m.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._m_a_xn__k(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.k.text)))
+                if self.fonction_assureur.text == "m_a_xn":
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.age.text) + int(self.m.text) + int(self.n.text) + 1 > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan.m_a_xn(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table()))
+                if self.fonction_assureur.text == "_a_xn_":
+                    if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                            float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                            int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1 ) | (
+                            int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1
+                    ):
+                        self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                    else:
+                        self.resultat_assureur.text = str(
+                            lan._a_xn_(int(self.age.text),int(self.n.text),float(self.i.text),self.choix_table()))
         else: # add catégorie Client
             pass
 
