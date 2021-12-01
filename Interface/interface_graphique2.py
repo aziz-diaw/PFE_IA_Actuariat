@@ -826,67 +826,67 @@ def fct2():
         def liste_life_annuities(self, assu_fct):
             assu_fct = DropDown()
 
-            fct1 = Button(text="ax", size_hint_y=None, height=44)
+            fct1 = Button(text="Up to the death life annuities (payment at the end of the year)", size_hint_y=None, height=44)
             fct1.bind(on_release=lambda fct1: assu_fct.select(fct1.text))
             assu_fct.add_widget(fct1)
 
-            fct2 = Button(text="a_xn", size_hint_y=None, height=44)
+            fct2 = Button(text="Temporary life annuities (payment at the end of the year)", size_hint_y=None, height=44)
             fct2.bind(on_release=lambda fct2: assu_fct.select(fct2.text))
             assu_fct.add_widget(fct2)
 
-            fct3 = Button(text="m_ax", size_hint_y=None, height=44)
+            fct3 = Button(text="Deferred life annuities (payment at the end of the year)", size_hint_y=None, height=44)
             fct3.bind(on_release=lambda fct3: assu_fct.select(fct3.text))
             assu_fct.add_widget(fct3)
 
-            fct4 = Button(text="_ax_", size_hint_y=None, height=44)
+            fct4 = Button(text="Up to the death life annuities (payment at the beginning of the year)", size_hint_y=None, height=44)
             fct4.bind(on_release=lambda fct4: assu_fct.select(fct4.text))
             assu_fct.add_widget(fct4)
 
-            fct5 = Button(text="_m_ax_", size_hint_y=None, height=44)
+            fct5 = Button(text="Deferred life annuities (payment at the beginning of the year)", size_hint_y=None, height=44)
             fct5.bind(on_release=lambda fct5: assu_fct.select(fct5.text))
             assu_fct.add_widget(fct5)
 
-            fct6 = Button(text="_m_a_xn_", size_hint_y=None, height=44)
+            fct6 = Button(text="Temporary and deferred life annuities (payment at the beginning of the year)", size_hint_y=None, height=44)
             fct6.bind(on_release=lambda fct6: assu_fct.select(fct6.text))
             assu_fct.add_widget(fct6)
 
-            fct7 = Button(text="ax_k", size_hint_y=None, height=44)
+            fct7 = Button(text="Up to the death life annuities (several payment each year, at the end of the year)", size_hint_y=None, height=44)
             fct7.bind(on_release=lambda fct7: assu_fct.select(fct7.text))
             assu_fct.add_widget(fct7)
 
-            fct8 = Button(text="a_xn_k", size_hint_y=None, height=44)
+            fct8 = Button(text="Temporary life annuities (several payment each year, at the end of the year)", size_hint_y=None, height=44)
             fct8.bind(on_release=lambda fct8: assu_fct.select(fct8.text))
             assu_fct.add_widget(fct8)
 
-            fct9 = Button(text="m_ax_k", size_hint_y=None, height=44)
+            fct9 = Button(text="Deferred life annuities (several payment each year, at the end of the year)", size_hint_y=None, height=44)
             fct9.bind(on_release=lambda fct9: assu_fct.select(fct9.text))
             assu_fct.add_widget(fct9)
 
-            fct10 = Button(text="m_a_xn_k", size_hint_y=None, height=44)
+            fct10 = Button(text="Temporary and deferred life annuities (several payment each year, at the end of the year)", size_hint_y=None, height=44)
             fct10.bind(on_release=lambda fct10: assu_fct.select(fct10.text))
             assu_fct.add_widget(fct10)
 
-            fct11 = Button(text="_ax__k", size_hint_y=None, height=44)
+            fct11 = Button(text="Up to the death life annuities (several payment each year, at the beginning of the year)", size_hint_y=None, height=44)
             fct11.bind(on_release=lambda fct11: assu_fct.select(fct11.text))
             assu_fct.add_widget(fct11)
 
-            fct12 = Button(text="_a_xn__k", size_hint_y=None, height=44)
+            fct12 = Button(text="Temporary life annuities (several payment each year, at the beginning of the year)", size_hint_y=None, height=44)
             fct12.bind(on_release=lambda fct12: assu_fct.select(fct12.text))
             assu_fct.add_widget(fct12)
 
-            fct13 = Button(text="_m_ax__k", size_hint_y=None, height=44)
+            fct13 = Button(text="Deferred life annuities (several payment each year, at the beginning of the year)", size_hint_y=None, height=44)
             fct13.bind(on_release=lambda fct13: assu_fct.select(fct13.text))
             assu_fct.add_widget(fct13)
 
-            fct14 = Button(text="_m_a_xn__k", size_hint_y=None, height=44)
+            fct14 = Button(text="Temporary and deferred life annuities (several payment each year, at the beginning of the year)", size_hint_y=None, height=44)
             fct14.bind(on_release=lambda fct14: assu_fct.select(fct14.text))
             assu_fct.add_widget(fct14)
 
-            fct15 = Button(text="m_a_xn", size_hint_y=None, height=44)
+            fct15 = Button(text="Temporary and deferred life annuities (payment at the end of the year)", size_hint_y=None, height=44)
             fct15.bind(on_release=lambda fct15: assu_fct.select(fct15.text))
             assu_fct.add_widget(fct15)
 
-            fct16 = Button(text="_a_xn_", size_hint_y=None, height=44)
+            fct16 = Button(text="Temporary life annuities (payment at the beginning of the year)", size_hint_y=None, height=44)
             fct16.bind(on_release=lambda fct14: assu_fct.select(fct16.text))
             assu_fct.add_widget(fct16)
 
@@ -895,27 +895,27 @@ def fct2():
         def liste_insurance_case_death(self, assu_fct):
             assu_fct = DropDown()
 
-            fct1 = Button(text="Ax", size_hint_y=None, height=44)
+            fct1 = Button(text="Whole Life", size_hint_y=None, height=44)
             fct1.bind(on_release=lambda fct1: assu_fct.select(fct1.text))
             assu_fct.add_widget(fct1)
 
-            fct2 = Button(text="nAx", size_hint_y=None, height=44)
+            fct2 = Button(text="Term Insurance", size_hint_y=None, height=44)
             fct2.bind(on_release=lambda fct2: assu_fct.select(fct2.text))
             assu_fct.add_widget(fct2)
 
-            fct3 = Button(text="m_n_Ax", size_hint_y=None, height=44)
+            fct3 = Button(text="Term Insurance diferred m years", size_hint_y=None, height=44)
             fct3.bind(on_release=lambda fct3: assu_fct.select(fct3.text))
             assu_fct.add_widget(fct3)
 
-            fct4 = Button(text="m_Ax", size_hint_y=None, height=44)
+            fct4 = Button(text="Whole Life diferred m years", size_hint_y=None, height=44)
             fct4.bind(on_release=lambda fct4: assu_fct.select(fct4.text))
             assu_fct.add_widget(fct4)
 
-            fct5 = Button(text="n_IA_x", size_hint_y=None, height=44)
+            fct5 = Button(text="Term Insurance with increasing life annuities", size_hint_y=None, height=44)
             fct5.bind(on_release=lambda fct5: assu_fct.select(fct5.text))
             assu_fct.add_widget(fct5)
 
-            fct6 = Button(text="n_DA_x", size_hint_y=None, height=44)
+            fct6 = Button(text="Term Insurance with decreasing life annuities", size_hint_y=None, height=44)
             fct6.bind(on_release=lambda fct6: assu_fct.select(fct6.text))
             assu_fct.add_widget(fct6)
 
@@ -1076,23 +1076,23 @@ def fct2():
             )
             self.fonction_text.bind(on_press=self.add_button)
 
-            ### liste fonctions Client
-            cli_fct = DropDown()
-
-            self.fctA = Button(text="To define", size_hint_y=None, height=44)
-            self.fctA.bind(on_release=lambda fctA: cli_fct.select(self.fctA.text))
-            cli_fct.add_widget(self.fctA)
-
-            self.fctB = Button(text="To define", size_hint_y=None, height=44)
-            self.fctB.bind(on_release=lambda fctB: cli_fct.select(self.fctB.text))
-            cli_fct.add_widget(self.fctB)
-
-            self.fonction_client = Button(text="Cliquer pour choisir la fonction",
-                                          font_size=15)
-            self.fonction_client.bind(on_release=cli_fct.open)
-            cli_fct.bind(on_select=lambda instance, x: setattr(self.fonction_client, 'text', x))
-
-            ###
+            # ### liste fonctions Client
+            # cli_fct = DropDown()
+            #
+            # self.fctA = Button(text="To define", size_hint_y=None, height=44)
+            # self.fctA.bind(on_release=lambda fctA: cli_fct.select(self.fctA.text))
+            # cli_fct.add_widget(self.fctA)
+            #
+            # self.fctB = Button(text="To define", size_hint_y=None, height=44)
+            # self.fctB.bind(on_release=lambda fctB: cli_fct.select(self.fctB.text))
+            # cli_fct.add_widget(self.fctB)
+            #
+            # self.fonction_client = Button(text="Cliquer pour choisir la fonction",
+            #                               font_size=15)
+            # self.fonction_client.bind(on_release=cli_fct.open)
+            # cli_fct.bind(on_select=lambda instance, x: setattr(self.fonction_client, 'text', x))
+            #
+            # ###
             self.resultat_assureur = Button(
                 text="Cliquer pour afficher la prime",
                 bold=True,
@@ -1183,128 +1183,15 @@ def fct2():
                 pass
 
         def callback(self, instance):  # add le check des params ds cette fonction
-                if self.categorie_assureur.text == "Probabilities one insured":
-                    if self.fonction_assureur.text == "px":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(poi.px(int(self.age.text), self.choix_table()))
-                    if self.fonction_assureur.text == "qx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(poi.qx(int(self.age.text), self.choix_table()))
-                    if self.fonction_assureur.text == "v":
-                        if (float(self.i.text) < 0) | (float(self.i.text) > 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(poi.v(float(self.i.text)))
-                    if self.fonction_assureur.text == "dx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(poi.dx(int(self.age.text), self.choix_table())) + " morts"
-                    if self.fonction_assureur.text == "npx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1) | (
-                                int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                poi.npx(int(self.age.text), int(self.n.text), self.choix_table()))
-                    if self.fonction_assureur.text == "nqx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                int(self.n.text) < 0) | (
-                                int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1) | (
-                                int(self.n.text) > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                poi.nqx(int(self.age.text), int(self.n.text), self.choix_table()))
-                    if self.fonction_assureur.text == "m_qx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                int(self.m.text) > len(self.choix_table()) - 1) | (
-                                int(self.m.text) + 1 > len(self.choix_table()) - 1) | (int(self.m.text) < 0) | (
-                                int(self.m.text) > len(self.choix_table()) - 1) | (
-                                int(self.m.text) + int(self.age.text) + 1 > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                poi.m_qx(int(self.age.text), int(self.m.text), self.choix_table()))
-                    if self.fonction_assureur.text == "m_n_qx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                int(self.m.text) > len(self.choix_table()) - 1) | (
-                                int(self.m.text) + int(self.n.text) > len(self.choix_table()) - 1) | (
-                                int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
-                                int(self.m.text) + int(self.age.text) + int(self.n.text) > len(
-                                self.choix_table()) - 1) | (int(self.n.text) < 0) | (
-                                int(self.n.text) > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                poi.m_n_qx(int(self.age.text), int(self.n.text), int(self.m.text), self.choix_table()))
-                elif self.categorie_assureur.text == "Commutation case death":
-                    if self.fonction_assureur.text == "Cx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                float(self.i.text) < 0) | (float(self.i.text) > 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                ccd.Cx(int(self.age.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "Mx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                float(self.i.text) < 0) | (float(self.i.text) > 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                ccd.Mx(int(self.age.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "Rx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                float(self.i.text) < 0) | (float(self.i.text) > 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                ccd.Rx(int(self.age.text), float(self.i.text), self.choix_table()))
-                elif self.categorie_assureur.text == "Commutation case life":
-                    if self.fonction_assureur.text == "Dx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                float(self.i.text) < 0) | (float(self.i.text) > 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                ccl.Dx(int(self.age.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "Nx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                float(self.i.text) < 0) | (float(self.i.text) > 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                ccl.Nx(int(self.age.text), self.choix_table(), float(self.i.text)))
-                    if self.fonction_assureur.text == "Sx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                float(self.i.text) < 0) | (float(self.i.text) > 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                ccl.Sx(int(self.age.text), self.choix_table(), float(self.i.text)))
-                    if self.fonction_assureur.text == "nEx":
-                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
-                                float(self.i.text) < 0) | (float(self.i.text) > 1) | (int(self.n.text) < 0) | (
-                                int(self.n.text) > len(self.choix_table()) - 1) | (
-                                int(self.age.text) + int(self.n.text) > len(self.choix_table()) - 1):
-                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
-                        else:
-                            self.resultat_assureur.text = str(
-                                ccl.nEx(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table()))
-                elif self.categorie_assureur.text == "Insurance case death":
-                    if self.fonction_assureur.text == "Ax":
+                if self.categorie_assureur.text == "Insurance case death":
+                    if self.fonction_assureur.text == "Whole Life":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1):
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else:
                             self.resultat_assureur.text = str(
                                 icd.Ax(int(self.age.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "nAx":
+                    if self.fonction_assureur.text == "Term Insurance":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
@@ -1314,7 +1201,7 @@ def fct2():
                         else:
                             self.resultat_assureur.text = str(
                                 icd.nAx(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "m_n_Ax":
+                    if self.fonction_assureur.text == "Term Insurance diferred m years":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
@@ -1327,7 +1214,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 icd.m_n_Ax(int(self.age.text), int(self.n.text), int(self.m.text), float(self.i.text),
                                            self.choix_table()))
-                    if self.fonction_assureur.text == "m_Ax":
+                    if self.fonction_assureur.text == "Whole Life diferred m years":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
@@ -1337,7 +1224,7 @@ def fct2():
                         else:
                             self.resultat_assureur.text = str(
                                 icd.m_Ax(int(self.age.text), int(self.m.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "n_IA_x":
+                    if self.fonction_assureur.text == "Term Insurance with increasing life annuities":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
@@ -1348,7 +1235,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 icd.n_IA_x(int(self.age.text), int(self.n.text), float(self.i.text),
                                            self.choix_table()))  # check this formule => does a negative value is possible ?
-                    if self.fonction_assureur.text == "n_DA_x":
+                    if self.fonction_assureur.text == "Term Insurance with decreasing life annuities":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
@@ -1360,7 +1247,7 @@ def fct2():
                                 icd.n_DA_x(int(self.age.text), int(self.n.text), float(self.i.text),
                                            self.choix_table()))
                 elif self.categorie_assureur.text == "Life annuities":
-                    if self.fonction_assureur.text == "ax":
+                    if self.fonction_assureur.text == "Up to the death life annuities (payment at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.age.text) + 1 > len(self.choix_table()) - 1
@@ -1369,7 +1256,7 @@ def fct2():
                         else:
                             self.resultat_assureur.text = str(
                                 lan.ax(int(self.age.text), self.choix_table(), float(self.i.text)))
-                    if self.fonction_assureur.text == "a_xn":
+                    if self.fonction_assureur.text == "Temporary life annuities (payment at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
@@ -1379,7 +1266,7 @@ def fct2():
                         else:
                             self.resultat_assureur.text = str(
                                 lan.a_xn(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "m_ax":
+                    if self.fonction_assureur.text == "Deferred life annuities (payment at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
@@ -1389,14 +1276,14 @@ def fct2():
                         else:
                             self.resultat_assureur.text = str(
                                 lan.m_ax(int(self.age.text), int(self.m.text), float(self.i.text), self.choix_table()))
-                    if self.fonction_assureur.text == "_ax_":
+                    if self.fonction_assureur.text == "Up to the death life annuities (payment at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1):
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else:
                             self.resultat_assureur.text = str(
                                 lan._ax_(int(self.age.text), self.choix_table(), float(self.i.text)))
-                    if self.fonction_assureur.text == "_m_ax_":
+                    if self.fonction_assureur.text == "Deferred life annuities (payment at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
@@ -1407,7 +1294,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan._m_ax_(int(self.age.text), int(self.m.text), float(self.i.text),
                                            self.choix_table()))
-                    if self.fonction_assureur.text == "_m_a_xn_":
+                    if self.fonction_assureur.text == "Temporary and deferred life annuities (payment at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.m.text) < 0) | (int(self.m.text) > len(self.choix_table()) - 1) | (
@@ -1419,7 +1306,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan._m_a_xn_(int(self.age.text), int(self.n.text), int(self.m.text), float(self.i.text),
                                              self.choix_table()))
-                    if self.fonction_assureur.text == "ax_k":
+                    if self.fonction_assureur.text == "Up to the death life annuities (several payment each year, at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12
@@ -1428,7 +1315,7 @@ def fct2():
                         else:
                             self.resultat_assureur.text = str(
                                 lan.ax_k(int(self.age.text), self.choix_table(), float(self.i.text), int(self.k.text)))
-                    if self.fonction_assureur.text == "a_xn_k":
+                    if self.fonction_assureur.text == "Temporary life annuities (several payment each year, at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12) | (
@@ -1439,7 +1326,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan.a_xn_k(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table(),
                                            int(self.k.text)))
-                    if self.fonction_assureur.text == "m_ax_k":
+                    if self.fonction_assureur.text == "Deferred life annuties (several payment each year, at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12) | (
@@ -1450,7 +1337,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan.m_ax_k(int(self.age.text), int(self.m.text), float(self.i.text), self.choix_table(),
                                            int(self.k.text)))
-                    if self.fonction_assureur.text == "m_a_xn_k":
+                    if self.fonction_assureur.text == "Temporary and deferred life annuities (several payment each year, at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12) | (
@@ -1463,7 +1350,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan.m_a_xn_k(int(self.age.text), int(self.n.text), int(self.m.text), float(self.i.text),
                                              self.choix_table(), int(self.k.text)))
-                    if self.fonction_assureur.text == "_ax__k":
+                    if self.fonction_assureur.text == "Up to the death life annuities (several payment each year, at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12
@@ -1473,7 +1360,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan._ax__k(int(self.age.text), self.choix_table(), float(self.i.text),
                                            int(self.k.text)))
-                    if self.fonction_assureur.text == "_a_xn__k":
+                    if self.fonction_assureur.text == "Temporary life annuities (several payment each year, at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12) | (
@@ -1484,7 +1371,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan._a_xn__k(int(self.age.text), int(self.n.text), float(self.i.text),
                                              self.choix_table(), int(self.k.text)))
-                    if self.fonction_assureur.text == "_m_ax__k":
+                    if self.fonction_assureur.text == "Deferred life annuities (several payment each year, at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12) | (
@@ -1495,7 +1382,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan._m_ax__k(int(self.age.text), int(self.m.text), float(self.i.text),
                                              self.choix_table(), int(self.k.text)))
-                    if self.fonction_assureur.text == "_m_a_xn__k":
+                    if self.fonction_assureur.text == "Temporary and deferred life annuities (several payment each year, at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12) | (
@@ -1508,7 +1395,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan._m_a_xn__k(int(self.age.text), int(self.n.text), int(self.m.text),
                                                float(self.i.text), self.choix_table(), int(self.k.text)))
-                    if self.fonction_assureur.text == "m_a_xn":
+                    if self.fonction_assureur.text == "Temporary and deferred life annuities (payment at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
@@ -1521,7 +1408,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan.m_a_xn(int(self.age.text), int(self.n.text), int(self.m.text), float(self.i.text),
                                            self.choix_table()))
-                    if self.fonction_assureur.text == "_a_xn_":
+                    if self.fonction_assureur.text == "Temporary life annuities (payment at the beginning of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
