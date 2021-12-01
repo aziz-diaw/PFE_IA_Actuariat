@@ -1326,7 +1326,7 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 lan.a_xn_k(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table(),
                                            int(self.k.text)))
-                    if self.fonction_assureur.text == "Deferred life annuties (several payment each year, at the end of the year)":
+                    if self.fonction_assureur.text == "Deferred life annuities (several payment each year, at the end of the year)":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.k.text) < 1) | (int(self.k.text) > 12) | (
