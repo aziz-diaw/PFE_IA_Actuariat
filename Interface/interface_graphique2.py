@@ -5,7 +5,7 @@ import Actuariat.commutation_case_death as ccd
 import Actuariat.commutation_case_life as ccl
 import Actuariat.insurance_case_death as icd
 import Actuariat.life_annuities as lan
-
+from tkinter import *
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -13,7 +13,6 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
 from kivy.core.window import Window
-from tkinter import *
 
 
 def fct1():
@@ -199,12 +198,12 @@ def fct1():
             Window.clearcolor = (18 / 255, 71 / 255, 159 / 255, 1)
 
             self.choice = Label(
-                text="The choose of mortality table",
+                text="Choix de la table de mortalité",
                 font_size=20,
             )
 
             self.text_table = Label(
-                text="The table is : ",
+                text="La table choisie est : ",
                 font_size=20,
             )
             ### liste des tables
@@ -225,18 +224,18 @@ def fct1():
             tab4.bind(on_release=lambda tab4: dropdown.select(tab4.text))
             dropdown.add_widget(tab4)
 
-            self.mainbutton = Button(text="Click to choose the table")
+            self.mainbutton = Button(text="Cliquer pour choisir la table")
             self.mainbutton.bind(on_release=dropdown.open)
             dropdown.bind(on_select=lambda instance, x: setattr(self.mainbutton, 'text', x))
 
             ###
             self.user = Label(
-                text="Entering the user's age",
+                text="Saisie de l'âge de l'utilisateur ",
                 font_size=20,
             )
 
             self.text_age = Label(
-                text="age : ",
+                text="âge : ",
                 font_size=20,
             )
 
@@ -248,7 +247,7 @@ def fct1():
             )
 
             self.saisie_n = Label(
-                text="Entering the number of year to add",
+                text="Saisie du nombre d'année n à ajouter",
                 font_size=20,
             )
 
@@ -265,7 +264,7 @@ def fct1():
             )
 
             self.saisie_m = Label(
-                text="Entering the number of year deferred to add",
+                text="Saisie du nombre d'année m à ajouter",
                 font_size=20,
             )
 
@@ -282,7 +281,7 @@ def fct1():
             )
 
             self.saisie_i = Label(
-                text="Entering the rate ",
+                text="Saisie du taux   ",
                 font_size=20,
             )
 
@@ -299,7 +298,7 @@ def fct1():
             )
 
             self.saisie_k = Label(
-                text="Entering the number of payment by year",
+                text="Saisie du nombre de paiements par année",
                 font_size=20,
             )
 
@@ -338,7 +337,7 @@ def fct1():
             self.cat5.bind(on_release=lambda cat5: assu.select(self.cat5.text))
             assu.add_widget(self.cat5)
 
-            self.categorie_assureur = Button(text="Choose the kind of product : ",
+            self.categorie_assureur = Button(text="Choix du type de produit ",
                                              font_size=15)
             self.categorie_assureur.bind(on_release=assu.open)
             assu.bind(on_select=lambda instance, x: setattr(self.categorie_assureur, 'text', x))
@@ -351,21 +350,38 @@ def fct1():
             ###
 
             self.fonction_text = Button(
-                text="Choose the insurance product",
+                text="choix du produit d'assurance",
                 bold=True,
                 background_color=(0.5, 0.6, 0.3, 1)
             )
             self.fonction_text.bind(on_press=self.add_button)
 
+            ### liste fonctions Client
+            cli_fct = DropDown()
+
+            self.fctA = Button(text="To define", size_hint_y=None, height=44)
+            self.fctA.bind(on_release=lambda fctA: cli_fct.select(self.fctA.text))
+            cli_fct.add_widget(self.fctA)
+
+            self.fctB = Button(text="To define", size_hint_y=None, height=44)
+            self.fctB.bind(on_release=lambda fctB: cli_fct.select(self.fctB.text))
+            cli_fct.add_widget(self.fctB)
+
+            self.fonction_client = Button(text="Cliquer pour choisir la fonction",
+                                          font_size=15)
+            self.fonction_client.bind(on_release=cli_fct.open)
+            cli_fct.bind(on_select=lambda instance, x: setattr(self.fonction_client, 'text', x))
+
+            ###
             self.resultat_assureur = Button(
-                text="Click to show the formulae",
+                text="Cliquer pour afficher le résultat de la formule",
                 bold=True,
                 background_color=(0, 1, 0, 1)
             )
             self.resultat_assureur.bind(on_press=self.callback)
 
             self.resultat_client = Button(
-                text="Click to delete the button created",
+                text="Supprimer le bouton de la fonction créé",
                 bold=True,
                 background_color=(1, 1, 0, 1)
             )
@@ -417,7 +433,7 @@ def fct1():
             if self.categorie_assureur.text == "Insurance case death":
                 assu_fct = self.liste_insurance_case_death(assu_fct)
 
-            fonction_assureur = Button(text="Click to choose the function", font_size=15)
+            fonction_assureur = Button(text="Cliquer pour choisir la fonction", font_size=15)
             fonction_assureur.bind(on_release=assu_fct.open)
             assu_fct.bind(on_select=lambda instance, x: setattr(fonction_assureur, 'text', x))
             return fonction_assureur, assu_fct
@@ -1396,6 +1412,7 @@ def fct2():
     if poi.check_function_poi(x, n, m, tab) == lan.check_function_lan(x, n, m, i, tab) == True:
         if __name__ == "__main__":
             Application().run()
+
 
 def fct3():
     pass

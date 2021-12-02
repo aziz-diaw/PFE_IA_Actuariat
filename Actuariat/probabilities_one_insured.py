@@ -1,7 +1,5 @@
 import numpy as np
 
-import Table.tables
-
 
 def v(i):
     return 1 / (1 + i)
@@ -68,4 +66,3 @@ def check_function_poi(x, n, m, table):
     return resu1 == resu2 == resu3 == True  # true car si les 3 sont faux ça return true
 
 
-print(Table.tables.TD_88_90[-15],Table.tables.TD_88_90[92] )

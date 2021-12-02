@@ -2,6 +2,7 @@ import Actuariat.commutation_case_life as ccl
 import Actuariat.probabilities_one_insured as poi
 import numpy as np
 
+
 ## Life Annuities due at the End of year
 
 # Up to the death
