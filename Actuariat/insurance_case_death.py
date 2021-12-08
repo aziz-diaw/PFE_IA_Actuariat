@@ -4,30 +4,34 @@ import Actuariat.probabilities_one_insured as poi
 
 
 # Whole Life
+import Table.tables
+
+
 def Ax(x, i, table):
-    return ccd.Mx(x, poi.v(i), table) / ccl.Dx(x, poi.v(i), table)
+    return ccd.Mx(x, i, table) / ccl.Dx(x, i, table)
 
 
 # Term Assurance
 def nAx(x, n, i, table):
-    return (ccd.Mx(x, poi.v(i), table) - ccd.Mx(x + n, poi.v(i), table)) / ccl.Dx(x, poi.v(i), table)
+    return (ccd.Mx(x, i, table) - ccd.Mx(x + n, i, table)) / ccl.Dx(x, i, table)
 
 
 # Term Assurance, differed (m)
 def m_n_Ax(x, n, m, i, table):
-    return (ccd.Mx(x + m, poi.v(i), table) - ccd.Mx(x + n + m, poi.v(i), table)) / ccl.Dx(x, poi.v(i), table)
+    return (ccd.Mx(x + m, i, table) - ccd.Mx(x + n + m, i, table)) / ccl.Dx(x, i, table)
 
 
 # Whole life, differed (m)
 def m_Ax(x, m, i, table):
-    return ccd.Mx(x + m, poi.v(i), table) / ccl.Dx(x, poi.v(i), table)
+    return ccd.Mx(x + m, i, table) / ccl.Dx(x, i, table)
 
 
 # Term Insurance with increasing life annuities
 def n_IA_x(x, n, i, table):
-    return (ccd.Rx(x, poi.v(i), table) - ccd.Rx(x + n, poi.v(i), table) - n * (ccd.Mx(x + n, poi.v(i), table))) / ccl.Dx(x, poi.v(i), table)
+    return (ccd.Rx(x, i, table) - ccd.Rx(x + n, i, table) - n * (ccd.Mx(x + n, i, table))) / ccl.Dx(x, i, table)
 
 
 # Term Insurance with decreasing life annuities
 def n_DA_x(x, n, i, table):
-    return (n * ccd.Mx(x, poi.v(i), table) - (ccd.Rx(x + 1, poi.v(i), table) - ccd.Rx(x + n + 1, poi.v(i), table))) / ccl.Dx(x, poi.v(i), table)
+    return (n * ccd.Mx(x, i, table) - (ccd.Rx(x + 1, i, table) - ccd.Rx(x + n + 1, i, table))) / ccl.Dx(x,i, table)
+

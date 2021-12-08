@@ -1,4 +1,5 @@
 import Actuariat.probabilities_one_insured as poi
+import Table.tables
 
 
 def Dx(x, i, table):
@@ -9,7 +10,7 @@ def Nx(x, table, i):
     N = 0
     w = len(table) - 1
     for j in range(0, w - x + 1):
-        N += Dx(x + j, poi.v(i), table)
+        N += Dx(x + j, i, table)
     return N
 
 
@@ -17,13 +18,12 @@ def Sx(x, table, i):
     S = 0
     w = len(table) - 1
     for j in range(0, w - x + 1):
-        S += Nx(x + j, table, poi.v(i))
+        S += Nx(x + j, table, i)
     return S
 
 
 # Pure Endowment
 def nEx(x, n, i, table):
-    return Dx(x + n, poi.v(i), table) / Dx(x, poi.v(i), table)
-
+    return Dx(x + n, i, table) / Dx(x, i, table)
 
 

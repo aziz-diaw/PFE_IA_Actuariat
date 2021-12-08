@@ -9,7 +9,7 @@ def Mx(x, i, table):
     M = 0
     w = len(table) - 1
     for j in range(0, w - x + 1):
-        M += Cx(x + j, poi.v(i), table)
+        M += Cx(x + j, i, table)
     return M
 
 
@@ -17,6 +17,5 @@ def Rx(x, i, table):
     R = 0
     w = len(table) - 1
     for j in range(0, w - x + 1):
-        R += Mx(x + j, poi.v(i), table)
+        R += Mx(x + j, i, table)
     return R
-

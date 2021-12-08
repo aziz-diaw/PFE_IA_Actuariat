@@ -1409,9 +1409,9 @@ def fct2():
     tab = table.tables[0]
     i = 0.2
 
-    if poi.check_function_poi(x, n, m, tab) == lan.check_function_lan(x, n, m, i, tab) == True:
-        if __name__ == "__main__":
-            Application().run()
+    #if poi.check_function_poi(x, n, m, tab) == lan.check_function_lan(x, n, m, i, tab) == True:
+    if __name__ == "__main__":
+        Application().run()
 
 
 def fct3():
@@ -1443,6 +1443,7 @@ menuInfo.grid(row=0, column=3)
 menuDeroulant1 = Menu(menuAssurance, tearoff=0)
 menuDeroulant1.add_command(label="Cliquer ici si vous etes un assureur", command=fct1)
 menuDeroulant1.add_command(label="Cliquer ici si vous etes un assuré", command=fct2)
+
 menuAssurance.configure(menu=menuDeroulant1)
 
 

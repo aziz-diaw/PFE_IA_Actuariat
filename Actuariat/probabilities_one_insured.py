@@ -35,6 +35,8 @@ def npx(x, n, table):
     return table[x + n] / table[x]
 
 
+
+
 # Death between ages x and x + n
 def nqx(x, n, table):
     return 1 - npx(x, n, table)
@@ -59,9 +61,11 @@ def check_function_poi(x, n, m, table):
     d = npx(x, m, table) * qx(x + m, table)
     resu2 = np.allclose(c, d)
 
+
     e = m_n_qx(x, n, m, table)
     f = npx(x, m, table) * nqx(x + m, n, table)
     resu3 = np.allclose(e, f)
+
 
     return resu1 == resu2 == resu3 == True  # true car si les 3 sont faux ça return true
 
