@@ -2,20 +2,6 @@ import Actuariat.commutation_case_life as ccl
 import Actuariat.commutation_case_death as ccd
 import Actuariat.probabilities_one_insured as poi
 
-
-# Whole Life
-import Table.tables
-
-
-def Ax(x, i, table):
-    return ccd.Mx(x, i, table) / ccl.Dx(x, i, table)
-
-
-# Term Assurance
-def nAx(x, n, i, table):
-    return (ccd.Mx(x, i, table) - ccd.Mx(x + n, i, table)) / ccl.Dx(x, i, table)
-
-
 # Term Assurance, differed (m)
 def m_n_Ax(x, n, m, i, table):
     return (ccd.Mx(x + m, i, table) - ccd.Mx(x + n + m, i, table)) / ccl.Dx(x, i, table)

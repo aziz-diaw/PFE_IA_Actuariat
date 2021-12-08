@@ -22,8 +22,3 @@ def Sx(x, table, i):
     return S
 
 
-# Pure Endowment
-def nEx(x, n, i, table):
-    return Dx(x + n, i, table) / Dx(x, i, table)
-
-
