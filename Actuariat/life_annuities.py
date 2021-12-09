@@ -1,13 +1,10 @@
 import Actuariat.commutation_case_life as ccl
-import Actuariat.probabilities_one_insured as poi
+import Actuariat.product as prod
 import numpy as np
 
 ## Life Annuities due at the End of year
 
 # Up to the death
-import Table.tables
-
-
 def ax(x, table, i):
     return ccl.Nx(x + 1, table, i) / (ccl.Dx(x, i, table))
 
@@ -95,7 +92,7 @@ def _m_a_xn__k(x, n, m, i, table, k):
 
 def check_function_lan(x, n, m, i, table):
     a = m_a_xn(x, n, m, i, table)
-    b = ccl.nEx(x, m, i, table) * a_xn(x + m, n, i, table)
+    b = prod.nEx(x, m, i, table) * a_xn(x + m, n, i, table)
     resu1 = np.allclose(a, b)
 
     c = ax(x, table, i)
