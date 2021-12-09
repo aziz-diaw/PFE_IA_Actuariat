@@ -198,6 +198,14 @@ def fct1():
             fct3.bind(on_release=lambda fct3: assu_fct.select(fct3.text))
             assu_fct.add_widget(fct3)
 
+            fct4 = Button(text="Ax_n", size_hint_y=None, height=44)
+            fct4.bind(on_release=lambda fct4: assu_fct.select(fct4.text))
+            assu_fct.add_widget(fct4)
+
+            fct5 = Button(text="Cx_n", size_hint_y=None, height=44)
+            fct5.bind(on_release=lambda fct5: assu_fct.select(fct5.text))
+            assu_fct.add_widget(fct5)
+
             return assu_fct
 
         def build(self):
@@ -802,6 +810,25 @@ def fct1():
                             self.resultat_assureur.text = str(
                                 prod.nAx(int(self.age.text), int(self.n.text), float(self.i.text),
                                          self.choix_table()))
+                    if self.fonction_assureur.text == "Ax_n":
+                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                                float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                                int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
+                                int(self.n.text) + int(self.age.text) > len(self.choix_table()) - 1
+                        ):
+                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                        else:
+                            self.resultat_assureur.text = str(
+                                prod.Ax_n(100,int(self.age.text), int(self.n.text), float(self.i.text),
+                                         self.choix_table()))
+                    if self.fonction_assureur.text == "Cx_n":
+                        if (int(self.age.text) < 0) | (float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                                int(self.n.text) < 0)  :
+                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                        else:
+                            self.resultat_assureur.text = str(
+                                prod.Cx_n(200,100,int(self.age.text), int(self.n.text), float(self.i.text),
+                                         [table.TH_00_02,table.TF_00_02]))
 
     x = 50
     n = 5
@@ -927,6 +954,14 @@ def fct2():
             fct3 = Button(text="Term Insurance", size_hint_y=None, height=44)
             fct3.bind(on_release=lambda fct3: assu_fct.select(fct3.text))
             assu_fct.add_widget(fct3)
+
+            fct4 = Button(text="Endowment", size_hint_y=None, height=44)
+            fct4.bind(on_release=lambda fct4: assu_fct.select(fct4.text))
+            assu_fct.add_widget(fct4)
+
+            fct5 = Button(text="Combined Endowment", size_hint_y=None, height=44)
+            fct5.bind(on_release=lambda fct5: assu_fct.select(fct5.text))
+            assu_fct.add_widget(fct5)
 
             return assu_fct
 
@@ -1411,6 +1446,25 @@ def fct2():
                             self.resultat_assureur.text = str(
                                 prod.nAx(int(self.age.text), int(self.n.text), float(self.i.text),
                                          self.choix_table()))
+                    if self.fonction_assureur.text == "Endowment":
+                        if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
+                                float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                                int(self.n.text) < 0) | (int(self.n.text) > len(self.choix_table()) - 1) | (
+                                int(self.n.text) + int(self.age.text) > len(self.choix_table()) - 1
+                        ):
+                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                        else:
+                            self.resultat_assureur.text = str(
+                                prod.Ax_n(100,int(self.age.text), int(self.n.text), float(self.i.text),
+                                         self.choix_table()))
+                    if self.fonction_assureur.text == "Combined Endowment":
+                        if (int(self.age.text) < 0) |  (float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                                int(self.n.text) < 0) :
+                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                        else:
+                            self.resultat_assureur.text = str(
+                                prod.Cx_n(200,100,int(self.age.text), int(self.n.text), float(self.i.text),
+                                         [table.TH_00_02,table.TF_00_02]))
 
 
     x = 50
