@@ -203,7 +203,6 @@ def fct1():
         def build(self):
             self.window = GridLayout()
             self.window.cols = 3
-            # self.window.rows = 10
             self.table = table.tables
             Window.clearcolor = (18 / 255, 71 / 255, 159 / 255, 1)
 
@@ -934,7 +933,6 @@ def fct2():
         def build(self):
             self.window = GridLayout()
             self.window.cols = 3
-            # self.window.rows = 10
             self.table = table.tables
             Window.clearcolor = (18 / 255, 71 / 255, 159 / 255, 1)
 
@@ -1077,12 +1075,6 @@ def fct2():
             assu.bind(on_select=lambda instance, x: setattr(self.categorie_assureur, 'text', x))
             ###
 
-            ### liste des catégories Client
-
-            cli = DropDown()
-
-            ###
-
             self.fonction_text = Button(
                 text="Choose the kind of insurance :",
                 bold=True,
@@ -1171,7 +1163,7 @@ def fct2():
             elif self.mainbutton.text == "TF_00_02":
                 return table.tables[3]
 
-        def callback(self, instance):  # add le check des params ds cette fonction
+        def callback(self, instance):
                 if self.categorie_assureur.text == "Insurance case death":
                     if self.fonction_assureur.text == "Term Insurance diferred m years":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
@@ -1435,9 +1427,6 @@ def fct2():
 def fct3():
     pass
 
-
-
-
 # Création de la fenêtre
 fen_princ = Tk()
 fen_princ.title("Mon application à moi que j'ai")
@@ -1447,10 +1436,6 @@ bg = PhotoImage(file = "pns.png")
 # Show image using label
 label1 = tkinter.Label(fen_princ, image = bg)
 label1.place(x = 50, y = 50)
-
-
-
-
 
 # Création du cadre-conteneur pour les menus
 zoneMenu = Frame(fen_princ, borderwidth=3, bg='#557788')
@@ -1480,7 +1465,6 @@ menuDeroulant2.add_command(label="Infos Assurance Vie", command=fct3)
 menuDeroulant2.add_command(label="Infos d'Assurance décés", command=fct3)
 menuDeroulant2.add_command(label="Infos d'Assurance vie et décés", command=fct3)
 menuInfo.configure(menu=menuDeroulant2)
-
 
 
 fen_princ.mainloop()
