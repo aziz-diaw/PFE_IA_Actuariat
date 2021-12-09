@@ -4,7 +4,6 @@ import numpy as np
 def v(i):
     return 1 / (1 + i)
 
-
 # Death between ages x and x + 1
 def qx(x, table):
     if x >= len(table) - 1:
@@ -33,8 +32,6 @@ def npx(x, n, table):
     if x >= len(table) - 1:
         return 0
     return table[x + n] / table[x]
-
-
 
 
 # Death between ages x and x + n

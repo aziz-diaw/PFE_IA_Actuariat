@@ -1,5 +1,4 @@
 import Actuariat.probabilities_one_insured as poi
-import Table.tables
 
 
 def Dx(x, i, table):

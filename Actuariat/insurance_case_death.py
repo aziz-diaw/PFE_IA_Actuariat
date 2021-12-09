@@ -1,6 +1,5 @@
 import Actuariat.commutation_case_life as ccl
 import Actuariat.commutation_case_death as ccd
-import Actuariat.probabilities_one_insured as poi
 
 # Term Assurance, differed (m)
 def m_n_Ax(x, n, m, i, table):
