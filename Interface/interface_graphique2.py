@@ -1,3 +1,4 @@
+import tkinter
 
 import Actuariat.probabilities_one_insured as poi
 import Table.tables as table
@@ -8,6 +9,8 @@ import Actuariat.life_annuities as lan
 import Actuariat.product as prod
 
 from tkinter import *
+from tkinter import messagebox
+
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -1439,6 +1442,15 @@ def fct3():
 fen_princ = Tk()
 fen_princ.title("Mon application à moi que j'ai")
 fen_princ.geometry("900x600")
+bg = PhotoImage(file = "pns.png")
+
+# Show image using label
+label1 = tkinter.Label(fen_princ, image = bg)
+label1.place(x = 50, y = 50)
+
+
+
+
 
 # Création du cadre-conteneur pour les menus
 zoneMenu = Frame(fen_princ, borderwidth=3, bg='#557788')
