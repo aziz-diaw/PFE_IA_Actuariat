@@ -18,7 +18,7 @@ def nAx(x, n, i, table):
     return (ccd.Mx(x, i, table) - ccd.Mx(x + n, i, table)) / ccl.Dx(x, i, table)
 
 
-# TODO : Endowment and Combined :------------> Done
+
 
 
 # Endowment
@@ -39,6 +39,4 @@ def Cx_n(C1, C2, x, n, i, tableliste):
                         ccl.Nx(x, tableliste[0], i) - ccl.Nx(x + n, tableliste[1], i)) * C2))
 
 
-### Test fonction python combined
 
-print(Cx_n(200, 100,  40, 20, 0.02, [table.TH_00_02, table.TF_00_02]))

@@ -1,4 +1,3 @@
-import tkinter
 
 import Actuariat.probabilities_one_insured as poi
 import Table.tables as table
@@ -8,8 +7,10 @@ import Actuariat.insurance_case_death as icd
 import Actuariat.life_annuities as lan
 import Actuariat.product as prod
 
+import tkinter
 from tkinter import *
 from tkinter import messagebox
+import math
 
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -18,7 +19,6 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
 from kivy.core.window import Window
-
 
 def fct1():
     class Application(App):
@@ -244,7 +244,6 @@ def fct1():
             self.mainbutton = Button(text="Cliquer pour choisir la table")
             self.mainbutton.bind(on_release=dropdown.open)
             dropdown.bind(on_select=lambda instance, x: setattr(self.mainbutton, 'text', x))
-
             ###
             self.user = Label(
                 text="Saisie de l'âge de l'utilisateur (en année)  ",
@@ -414,7 +413,6 @@ def fct1():
             assu.bind(on_select=lambda instance, x: setattr(self.categorie_assureur, 'text', x))
             ###
 
-
             self.fonction_text = Button(
                 text="choix du produit d'assurance",
                 bold=True,
@@ -496,7 +494,6 @@ def fct1():
             if self.categorie_assureur.text == "Insurance products" :
                 assu_fct = self.list_product(assu_fct)
 
-
             fonction_assureur = Button(text="Cliquer pour choisir la fonction", font_size=15)
             fonction_assureur.bind(on_release=assu_fct.open)
             assu_fct.bind(on_select=lambda instance, x: setattr(fonction_assureur, 'text', x))
@@ -519,6 +516,9 @@ def fct1():
                 return table.tables[2]
             elif self.mainbutton.text == "TF_00_02":
                 return table.tables[3]
+
+        def float_round_up(self,x):
+            return math.ceil(x*1000)/1000
 
         def callback(self, instance):  # add le check des params ds cette fonction
                 if self.categorie_assureur.text == "Probabilities one insured":
@@ -853,14 +853,14 @@ def fct1():
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.nEx(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table()))
+                                self.float_round_up(prod.nEx(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table())))
                     if self.fonction_assureur.text == "Ax":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1):
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.Ax(int(self.age.text), float(self.i.text), self.choix_table()))
+                                self.float_round_up(prod.Ax(int(self.age.text), float(self.i.text), self.choix_table())))
                     if self.fonction_assureur.text == "nAx":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
@@ -870,8 +870,8 @@ def fct1():
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.nAx(int(self.age.text), int(self.n.text), float(self.i.text),
-                                         self.choix_table()))
+                                self.float_round_up(prod.nAx(int(self.age.text), int(self.n.text), float(self.i.text),
+                                         self.choix_table())))
                     if self.fonction_assureur.text == "Ax_n":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
@@ -881,16 +881,16 @@ def fct1():
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.Ax_n(int(self.c_benef.text),int(self.age.text), int(self.n.text), float(self.i.text),
-                                         self.choix_table()))
+                                self.float_round_up(prod.Ax_n(int(self.c_benef.text),int(self.age.text), int(self.n.text), float(self.i.text),
+                                         self.choix_table())))
                     if self.fonction_assureur.text == "Cx_n":
                         if (int(self.age.text) < 0) | (float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0)  :
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.Cx_n(int(self.c_life.text),int(self.c_death.text),int(self.age.text), int(self.n.text), float(self.i.text),
-                                         [table.TH_00_02,table.TF_00_02]))
+                               self.float_round_up(prod.Cx_n(int(self.c_life.text),int(self.c_death.text),int(self.age.text), int(self.n.text), float(self.i.text),
+                                         [table.TH_00_02,table.TF_00_02])))
 
     x = 50
     n = 5
@@ -1180,9 +1180,6 @@ def fct2():
             self.window.add_widget(self.fonction_text)
             self.window.add_widget(self.resultat_assureur)
             self.window.add_widget(self.resultat_client)
-
-
-
             return self.window
 
         def buton_creation(self):
@@ -1214,6 +1211,9 @@ def fct2():
             elif self.mainbutton.text == "TF_00_02":
                 return table.tables[3]
 
+        def float_round_up(self,x):
+            return math.ceil(x*1000)/1000
+
         def callback(self, instance):
                 if self.categorie_assureur.text == "Insurance products":
                     if self.fonction_assureur.text == "Pure Endowment":
@@ -1224,14 +1224,14 @@ def fct2():
                             self.resultat_assureur.text = "parameter input error"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.nEx(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table()))+"€ pour un montant de 1€"
+                                self.float_round_up(prod.nEx(int(self.age.text), int(self.n.text), float(self.i.text), self.choix_table())))+"€ pour un montant de 1€"
                     if self.fonction_assureur.text == "Whole Life":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1):
                             self.resultat_assureur.text = "parameter input error"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.Ax(int(self.age.text), float(self.i.text), self.choix_table()))+"€ pour un montant de 1€"
+                                self.float_round_up(prod.Ax(int(self.age.text), float(self.i.text), self.choix_table())))+"€ pour un montant de 1€"
                     if self.fonction_assureur.text == "Term Insurance":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
@@ -1241,8 +1241,8 @@ def fct2():
                             self.resultat_assureur.text = "parameter input error"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.nAx(int(self.age.text), int(self.n.text), float(self.i.text),
-                                         self.choix_table()))+"€ pour un montant de 1€"
+                                self.float_round_up(prod.nAx(int(self.age.text), int(self.n.text), float(self.i.text),
+                                         self.choix_table())))+"€ pour un montant de 1€"
                     if self.fonction_assureur.text == "Endowment":
                         if (int(self.age.text) < 0) | (int(self.age.text) > len(self.choix_table()) - 1) | (
                                 float(self.i.text) < 0) | (float(self.i.text) > 1) | (
@@ -1252,16 +1252,16 @@ def fct2():
                             self.resultat_assureur.text = "parameter input error"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.Ax_n(int(self.c_benef.text),int(self.age.text), int(self.n.text), float(self.i.text),
-                                         self.choix_table()))+"€ for a beneficary of " + self.c_benef.text +"€"
+                                self.float_round_up(prod.Ax_n(int(self.c_benef.text),int(self.age.text), int(self.n.text), float(self.i.text),
+                                         self.choix_table())))+"€ for a beneficary of " + self.c_benef.text +"€"
                     if self.fonction_assureur.text == "Combined Endowment":
                         if (int(self.age.text) < 0) |  (float(self.i.text) < 0) | (float(self.i.text) > 1) | (
                                 int(self.n.text) < 0) :
                             self.resultat_assureur.text = "parameter input error"
                         else:
                             self.resultat_assureur.text = str(
-                                prod.Cx_n(int(self.c_life.text),int(self.c_death.text),int(self.age.text), int(self.n.text), float(self.i.text),
-                                         [table.TH_00_02,table.TF_00_02]))+"€ for a beneficary of "+self.c_life.text+" for life and " + self.c_death.text+" for the death"
+                                self.float_round_up(prod.Cx_n(int(self.c_life.text),int(self.c_death.text),int(self.age.text), int(self.n.text), float(self.i.text),
+                                         [table.TH_00_02,table.TF_00_02])))+"€ for a beneficary of "+self.c_life.text+" for life and " + self.c_death.text+" for the death"
 
 
     x = 50
