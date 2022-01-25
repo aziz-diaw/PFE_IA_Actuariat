@@ -902,7 +902,7 @@ def fct1():
     i = 0.2
 
     if poi.check_function_poi(x, n, m, tab) == lan.check_function_lan(x, n, m, i, tab) == True:
-        if cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm","Temporaire_Deces_TDD_Primes.xlsm")[0] == True and cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm","Temporaire_Deces_TDD_Primes.xlsm")[1] == True :
+        if cfa.check_atdd()[0] == True and cfa.check_atdd()[1] == True :
             if __name__ == "__main__":
                 Application().run()
 def fct2():
@@ -1274,7 +1274,7 @@ def fct2():
     i = 0.2
 
     if poi.check_function_poi(x, n, m, tab) == lan.check_function_lan(x, n, m, i, tab) == True:
-        if cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm", "Temporaire_Deces_TDD_Primes.xlsm")[0] == True and cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm", "Temporaire_Deces_TDD_Primes.xlsm")[1] == True:
+        if cfa.check_atdd()[0] == True and cfa.check_atdd()[1] == True:
             if __name__ == "__main__":
                 Application().run()
 

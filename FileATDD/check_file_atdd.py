@@ -4,7 +4,7 @@ import Table.tables as table
 import numpy as np
 
 
-def check_atdd(filename_cap_dif, filename_temp_dec):
+def check_atdd(filename_cap_dif = "Capital_Differe_TDD_Primes.xlsm", filename_temp_dec = "Temporaire_Deces_TDD_Primes.xlsm"):
     file_cap = pd.read_excel(filename_cap_dif)
     col_cap = file_cap.columns
 
