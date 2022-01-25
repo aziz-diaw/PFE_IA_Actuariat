@@ -6,6 +6,9 @@ import Actuariat.commutation_case_life as ccl
 import Actuariat.insurance_case_death as icd
 import Actuariat.life_annuities as lan
 import Actuariat.product as prod
+import FileATDD.check_file_atdd as cfa
+
+
 
 import tkinter
 from tkinter import *
@@ -899,8 +902,9 @@ def fct1():
     i = 0.2
 
     if poi.check_function_poi(x, n, m, tab) == lan.check_function_lan(x, n, m, i, tab) == True:
-        if __name__ == "__main__":
-            Application().run()
+        if cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm","Temporaire_Deces_TDD_Primes.xlsm")[0] == True and cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm","Temporaire_Deces_TDD_Primes.xlsm")[1] == True :
+            if __name__ == "__main__":
+                Application().run()
 def fct2():
     class Application(App):
 
@@ -1270,8 +1274,9 @@ def fct2():
     i = 0.2
 
     if poi.check_function_poi(x, n, m, tab) == lan.check_function_lan(x, n, m, i, tab) == True:
-        if __name__ == "__main__":
-            Application().run()
+        if cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm", "Temporaire_Deces_TDD_Primes.xlsm")[0] == True and cfa.check_atdd("Capital_Differe_TDD_Primes.xlsm", "Temporaire_Deces_TDD_Primes.xlsm")[1] == True:
+            if __name__ == "__main__":
+                Application().run()
 
 
 def fct3():
