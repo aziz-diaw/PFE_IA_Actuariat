@@ -1263,7 +1263,6 @@ def fct2():
                                 self.float_round_up(prod.Cx_n(int(self.c_life.text),int(self.c_death.text),int(self.age.text), int(self.n.text), float(self.i.text),
                                          [table.TH_00_02,table.TF_00_02])))+"€ for a beneficary of "+self.c_life.text+" for life and " + self.c_death.text+" for the death"
 
-
     x = 50
     n = 5
     m = 5
