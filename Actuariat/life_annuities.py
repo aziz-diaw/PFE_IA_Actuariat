@@ -1,6 +1,8 @@
 import Actuariat.commutation_case_life as ccl
+import Actuariat.commutation_case_death as ccd
 import Actuariat.product as prod
 import numpy as np
+import Table.tables as Table
 
 ## Life Annuities due at the End of year
 
