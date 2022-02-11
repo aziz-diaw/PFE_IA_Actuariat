@@ -16,6 +16,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=0)
 def opti_poly_degree(degree_max):
     r2 = []
     for i in range(1,degree_max):
+        print("degrée : ", i)
         pol = PolynomialFeatures(degree = i)
         x_train = pol.fit_transform(X_train)
         model = LinearRegression()
@@ -25,6 +26,8 @@ def opti_poly_degree(degree_max):
     return r2
 
 
-essaie = opti_poly_degree(15)
-print(essaie)
+degre_pol = opti_poly_degree(15)
+print("le modèle polynomial qui fit le mieux nos donnés est un modèle de degré : ", np.argmax(degre_pol)+1)
+
+print("Le coeffcient r2 de ce modèle est : ", degre_pol[np.argmax(degre_pol)])
 
