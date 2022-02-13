@@ -1,6 +1,7 @@
 import Actuariat.commutation_case_life as ccl
 import Actuariat.commutation_case_death as ccd
 import Table.tables as tables
+import Table.tables as table
 
 
 # Pure Endowment
@@ -45,3 +46,6 @@ def Cx_n(C1, C2, x, n, i):
     # e = ((ccd.Mx(x,i,tables.TF_00_02) - ccd.Mx(x+n,i,tables.TF_00_02))*C2 + ccl.Dx(x+n,i,tables.TF_00_02)*C1)/(ccl.Nx(x,tables.TF_00_02,i) - ccl.Nx(x+n,tables.TF_00_02,i))
     # f = ((ccd.Mx(x,i,tables.TH_00_02) - ccd.Mx(x+n,i,tables.TH_00_02))*C2 + ccl.Dx(x+n,i,tables.TH_00_02)*C1)/(ccl.Nx(x,tables.TH_00_02,i) - ccl.Nx(x+n,tables.TH_00_02,i))
     return max(a, b) #, max(c,d) , max(e,f)
+
+
+#print(nAx(24,20,0.03,table.TH_00_02))
