@@ -27,7 +27,7 @@ def opti_poly_degree(degree_max):
 
 
 degre_pol = opti_poly_degree(15)
+print(degre_pol)
 print("le modèle polynomial qui fit le mieux nos donnés est un modèle de degré : ", np.argmax(degre_pol)+1)
-
 print("Le coeffcient r2 de ce modèle est : ", degre_pol[np.argmax(degre_pol)])
 
