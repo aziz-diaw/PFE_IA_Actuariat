@@ -27,4 +27,4 @@ def nAx_stress(x, i, n, stress_rate, tab):
 
 
 #print(nAx_stress(24,0.03,20,0.25,table.TH_00_02))
-print(lx_stressed(0.25, table.TH_00_02))
+#print(lx_stressed(0.25, table.TH_00_02))
