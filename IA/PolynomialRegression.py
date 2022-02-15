@@ -43,39 +43,45 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=0)
 
 #### courbe apprentissage pour le meilleur polynôme ####
 
-# def courbe_apprentissage(split = 2):
+def courbe_apprentissage(X,Y,split = 2):
+
+    r2 = np.zeros(int(X.shape[0]/split))
+    for k in range(1,7):
+        print(k)
+        r2_k = []
+        for i in range(int(X.shape[0]/split)):
+            x = X[0:(split + split*i)]
+            y = Y.to_numpy()[0:(split +split*i)]
+            pol = PolynomialFeatures(degree=k)
+            x_train = pol.fit_transform(x)
+            model = LinearRegression()
+            model.fit(x_train, y)
+            pred_Y = model.predict(x_train)
+            r2_k.append(r2_score(y, pred_Y))
+        r2 = np.vstack((r2,r2_k))
+    return r2
+
+
+# courbe_apprentissage_score_regression= courbe_apprentissage(X_test,Y_test)
 #
-#     r2 = np.zeros(int(X_train.shape[0]/split))
-#     for k in range(1,7):
-#         print(k)
-#         r2_k = []
-#         for i in range(int(X_train.shape[0]/split)):
-#         #for i in range(3) :
-#             x = X_train[0:(split + split*i)]
-#             y = Y_train.to_numpy()[0:(split +split*i)]
-#             pol = PolynomialFeatures(degree=k)
-#             x_train = pol.fit_transform(x)
-#             model = LinearRegression()
-#             model.fit(x_train, y)
-#             pred_Y = model.predict(x_train)
-#             r2_k.append(r2_score(y, pred_Y))
-#         r2 = np.vstack((r2,r2_k))
-#     return r2
 #
-#
-# courbe_apprentissage_score_regression= courbe_apprentissage()
-#
-#
-# split = 2
+split = 2
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[1],label = "Regression Polynomial de degré 1")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[2],label = "Regression Polynomial de degré 2")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[3],label = "Regression Polynomial de degré 3")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[4],label = "Regression Polynomial de degré 4")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[5],label = "Regression Polynomial de degré 5")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[6],label = "Regression Polynomial de degré 6")
+
+# plt.plot(range(split,X_test.shape[0]+split,split),courbe_apprentissage_score_regression[1],label = "Regression Polynomial de degré 1")
+# plt.plot(range(split,X_test.shape[0]+split,split),courbe_apprentissage_score_regression[2],label = "Regression Polynomial de degré 2")
+# plt.plot(range(split,X_test.shape[0]+split,split),courbe_apprentissage_score_regression[3],label = "Regression Polynomial de degré 3")
+# plt.plot(range(split,X_test.shape[0]+split,split),courbe_apprentissage_score_regression[4],label = "Regression Polynomial de degré 4")
+# plt.plot(range(split,X_test.shape[0]+split,split),courbe_apprentissage_score_regression[5],label = "Regression Polynomial de degré 5")
+# plt.plot(range(split,X_test.shape[0]+split,split),courbe_apprentissage_score_regression[6],label = "Regression Polynomial de degré 6")
 # plt.xlabel("taille du dataset")
 # plt.ylabel("score de regression R2")
-# plt.title("Courbe d'apprentissage pour les dataset d'entrainements pour différents modèles polynomiaux")
+# plt.title("Courbe d'apprentissage pour les dataset de test pour différents modèles polynomiaux")
 # plt.legend()
 # plt.show()
 

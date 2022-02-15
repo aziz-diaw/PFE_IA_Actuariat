@@ -11,8 +11,8 @@ donnees = pandas.read_csv('combinaisons.csv',usecols=['age', 'nombre_payment' , 
 #print(donnees)
 
 ## matrice de corrélation entre la prime et les facteurs explicatifs
-correlation_matrix = donnees.corr()
-u=correlation_matrix["prime"]
+# correlation_matrix = donnees.corr()
+# u=correlation_matrix["prime"]
 """"                             Corrélations : on voit que la variable la plus explicative est le montant
 age               0.245662
 nombre_payment   -0.214633
@@ -32,7 +32,7 @@ reg = KNeighborsRegressor(n_neighbors=1)
 # fit the model using the training data and training targets
 reg.fit(X_train, Y_train)
 #print("Test set predictions:\n", reg.predict(X_test))
-print("Test set R^2: {:.2f}".format(reg.score(X_test, Y_test)))
+# print("Test set R^2: {:.2f}".format(reg.score(X_test, Y_test)))
 
 ########## print de la target en fonction de chaque paramétre
 """""""""
@@ -62,43 +62,43 @@ plt.xlabel('montant')
 plt.ylabel('prime_prédite')
 plt.show()
 """""""""
-fig, axs = plt.subplots(3, 2)
-axs[0, 0].scatter(x=X_test[:,0], y=reg.predict(X_test))
-axs[0,0].set(xlabel = 'age', ylabel= 'prime_prédite')
-
-axs[0, 1].scatter(x=X_test[:,1], y=reg.predict(X_test))
-axs[0,1].set(xlabel = 'nbre_payment', ylabel= 'prime_prédite')
-
-axs[1, 0].scatter(x=X_test[:,2], y=reg.predict(X_test))
-axs[1,0].set(xlabel = 'maturité', ylabel= 'prime_prédite')
-
-axs[1, 1].scatter(x=X_test[:,3], y=reg.predict(X_test))
-axs[1,1].set(xlabel = 'taux', ylabel= 'prime_prédite')
-
-axs[2, 0].scatter(x=X_test[:,4], y=reg.predict(X_test))
-axs[2,0].set(xlabel = 'montant', ylabel= 'prime_prédite')
-
-plt.show()
-
-
-fig1, axs = plt.subplots(3, 2)
-axs[0, 0].scatter(x=X_train[:,0], y=Y_train)
-axs[0,0].set(xlabel = 'age', ylabel= 'prime_entrainement')
-
-axs[0, 1].scatter(x=X_train[:,1], y=Y_train)
-axs[0,1].set(xlabel = 'nbre_payment', ylabel= 'prime_entrainement')
-
-axs[1, 0].scatter(x=X_train[:,2], y=Y_train)
-axs[1,0].set(xlabel = 'maturité', ylabel= 'prime_entrainement')
-
-axs[1, 1].scatter(x=X_train[:,3], y=Y_train)
-axs[1,1].set(xlabel = 'taux', ylabel= 'prime_entrainement')
-
-axs[2, 0].scatter(x=X_train[:,4], y=Y_train)
-axs[2,0].set(xlabel = 'montant', ylabel= 'prime_entrainement')
-
-
-plt.show()
+# fig, axs = plt.subplots(3, 2)
+# axs[0, 0].scatter(x=X_test[:,0], y=reg.predict(X_test))
+# axs[0,0].set(xlabel = 'age', ylabel= 'prime_prédite')
+#
+# axs[0, 1].scatter(x=X_test[:,1], y=reg.predict(X_test))
+# axs[0,1].set(xlabel = 'nbre_payment', ylabel= 'prime_prédite')
+#
+# axs[1, 0].scatter(x=X_test[:,2], y=reg.predict(X_test))
+# axs[1,0].set(xlabel = 'maturité', ylabel= 'prime_prédite')
+#
+# axs[1, 1].scatter(x=X_test[:,3], y=reg.predict(X_test))
+# axs[1,1].set(xlabel = 'taux', ylabel= 'prime_prédite')
+#
+# axs[2, 0].scatter(x=X_test[:,4], y=reg.predict(X_test))
+# axs[2,0].set(xlabel = 'montant', ylabel= 'prime_prédite')
+#
+# plt.show()
+#
+#
+# fig1, axs = plt.subplots(3, 2)
+# axs[0, 0].scatter(x=X_train[:,0], y=Y_train)
+# axs[0,0].set(xlabel = 'age', ylabel= 'prime_entrainement')
+#
+# axs[0, 1].scatter(x=X_train[:,1], y=Y_train)
+# axs[0,1].set(xlabel = 'nbre_payment', ylabel= 'prime_entrainement')
+#
+# axs[1, 0].scatter(x=X_train[:,2], y=Y_train)
+# axs[1,0].set(xlabel = 'maturité', ylabel= 'prime_entrainement')
+#
+# axs[1, 1].scatter(x=X_train[:,3], y=Y_train)
+# axs[1,1].set(xlabel = 'taux', ylabel= 'prime_entrainement')
+#
+# axs[2, 0].scatter(x=X_train[:,4], y=Y_train)
+# axs[2,0].set(xlabel = 'montant', ylabel= 'prime_entrainement')
+#
+#
+# plt.show()
 
 
 
@@ -109,10 +109,10 @@ plt.show()
 ############## Détermination du meilleur K
 
 
-parameters = {"n_neighbors": range(1, 50)}
-gridsearch = GridSearchCV(KNeighborsRegressor(), parameters)
-gridsearch.fit(X_train, Y_train)
-print(gridsearch.best_params_)
+# parameters = {"n_neighbors": range(1, 50)}
+# gridsearch = GridSearchCV(KNeighborsRegressor(), parameters)
+# gridsearch.fit(X_train, Y_train)
+# print(gridsearch.best_params_)
 
 
 """""""""
@@ -135,4 +135,29 @@ axes[0].legend(["Model predictions", "Training data/target",
                 "Test data/target"], loc="best")
 plt.show()
 """""""""
+
+
+#### plot de la précision en fonction de k
+
+# training_accuracy = []
+# test_accuracy = []
+# # try n_neighbors from 1 to 50
+# neighbors_settings = range(1, 51)
+#
+# for n_neighbors in neighbors_settings:
+#     # build the model
+#     clf = KNeighborsRegressor(n_neighbors=n_neighbors)
+#     clf.fit(X_train, Y_train)
+#     # record training set accuracy
+#     training_accuracy.append(clf.score(X_train, Y_train))
+#     # record generalization accuracy
+#     test_accuracy.append(clf.score(X_test, Y_test))
+#
+# plt.plot(neighbors_settings, training_accuracy, label="Précision donnnées d'entrainement")
+# plt.plot(neighbors_settings, test_accuracy, label="Précision données de test")
+# plt.ylabel("Score de précision")
+# plt.xlabel("Nombre de voisins")
+# plt.title("Visualisation du score de précision en fonction du nombre de voisin ")
+# plt.legend()
+# plt.show()
 
