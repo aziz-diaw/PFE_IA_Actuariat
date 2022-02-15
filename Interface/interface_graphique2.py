@@ -8,6 +8,7 @@ import Actuariat.life_annuities as lan
 import Actuariat.product as prod
 import Actuariat.StressTest as st
 import FileATDD.check_file_atdd as cfa
+import Actuariat.Reserves as res
 
 
 
@@ -221,6 +222,15 @@ def fct1():
 
             return assu_fct
 
+        def list_reserve(self,assu_fct):
+            assu_fct = DropDown()
+
+            fct1 = Button(text="nAx_reserve", size_hint_y=None, height=44)
+            fct1.bind(on_release=lambda fct1: assu_fct.select(fct1.text))
+            assu_fct.add_widget(fct1)
+
+            return assu_fct
+
 
 
         def build(self):
@@ -412,6 +422,23 @@ def fct1():
                 input_filter="float"
             )
 
+            self.saisie_t = Label(
+                text="Saisie de l'année pour voir les réserves",
+                font_size=20
+            )
+
+            self.text_t = Label(
+                text=" t: ",
+                font_size=20,
+            )
+
+            self.t = TextInput(
+                multiline=False,
+                padding_y=(20, 20),
+                size_hint=(0.5, 0.5),
+                input_filter="int"
+            )
+
 
 
             ### liste des catégories Assureurs
@@ -442,6 +469,10 @@ def fct1():
             assu.add_widget(self.cat6)
 
             self.cat7 = Button(text="Stress product", size_hint_y=None, height=44)
+            self.cat7.bind(on_release=lambda cat6: assu.select(self.cat7.text))
+            assu.add_widget(self.cat7)
+
+            self.cat7 = Button(text="Reserves", size_hint_y=None, height=44)
             self.cat7.bind(on_release=lambda cat6: assu.select(self.cat7.text))
             assu.add_widget(self.cat7)
 
@@ -513,6 +544,10 @@ def fct1():
             self.window.add_widget(self.text_stress_rate)
             self.window.add_widget(self.stress_rate)
 
+            self.window.add_widget(self.saisie_t)
+            self.window.add_widget(self.text_t)
+            self.window.add_widget(self.t)
+
             self.window.add_widget(self.categorie_assureur)
 
             self.window.add_widget(self.fonction_text)
@@ -538,6 +573,8 @@ def fct1():
                 assu_fct = self.list_product(assu_fct)
             if self.categorie_assureur.text == "Stress product" :
                 assu_fct = self.list_stress_product(assu_fct)
+            if self.categorie_assureur.text == "Reserves" :
+                assu_fct = self.list_reserve(assu_fct)
 
             fonction_assureur = Button(text="Cliquer pour choisir la fonction", font_size=15)
             fonction_assureur.bind(on_release=assu_fct.open)
@@ -942,6 +979,13 @@ def fct1():
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else :
                             self.resultat_assureur.text =str(self.float_round_up(st.nAx_stress(int(self.age.text),float(self.i.text),int(self.n.text),float(self.stress_rate.text),self.choix_table())))
+                elif self.categorie_assureur.text == "Reserves":
+                    if self.fonction_assureur.text == "nAx_reserve":
+                        if (int(self.age.text) < 0) | (float(self.i.text) < 0) | (float(self.i.text) > 1) | (
+                                int(self.n.text) < 0)   :
+                            self.resultat_assureur.text = "Erreur dans les paramètres saisis"
+                        else :
+                            self.resultat_assureur.text =str(self.float_round_up(res.nAx_reserve(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.t.text))))
 
 
 
