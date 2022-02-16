@@ -8,3 +8,4 @@ def nAx_reserve(x, n,m, i, table, t, C=1):
 
 
 
+# print(nAx_reserve(50,5,5,0.01,Table.tables.TH_00_02,5))
