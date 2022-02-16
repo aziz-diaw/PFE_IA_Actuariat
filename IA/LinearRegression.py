@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 donnees = pandas.read_csv('combinaisons.csv',usecols=['age', 'nombre_payment' , 'maturite' , 'taux' , 'montant' ,'prime'])
 Z = donnees.drop("prime", axis=1)
-Y = Z.drop("taux", axis=1)
+Y = Z.drop("age", axis=1)
 X = Y
 X = X.values
 Y= donnees['prime']
@@ -32,7 +32,6 @@ axs[0,2].set(xlabel = 'montant', ylabel= 'prime_prédite')
 #axs[2,0].set(xlabel = 'montant', ylabel= 'prime_prédite')
 
 plt.show()
-
 
 
 
