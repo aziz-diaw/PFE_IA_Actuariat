@@ -49,7 +49,6 @@ def premiums_reserves(x, n, m, i, table, t,P):
 def total_LIABILITY(x, n, m, i, table, t,P):
     return claims(x,t,table) + premiums_reserves(x, n, m, i, table, t,P)
 
-T = 4
-
-print(total_LIABILITY(50,5,5,0.01,Table.tables.TH_00_02,T,prod.annual_nAx(50,5,5,0.01,Table.tables.TH_00_02)))
-print(total_ASSET(50,5,5,0.01,Table.tables.TH_00_02,T,prod.annual_nAx(50,5,5,0.01,Table.tables.TH_00_02)))
+# T = 4
+# print(total_LIABILITY(50,5,5,0.01,Table.tables.TH_00_02,T,prod.annual_nAx(50,5,5,0.01,Table.tables.TH_00_02)))
+# print(total_ASSET(50,5,5,0.01,Table.tables.TH_00_02,T,prod.annual_nAx(50,5,5,0.01,Table.tables.TH_00_02)))

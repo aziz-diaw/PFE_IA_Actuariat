@@ -9,6 +9,7 @@ import Actuariat.product as prod
 import Actuariat.StressTest as st
 import FileATDD.check_file_atdd as cfa
 import Actuariat.Reserves as res
+import Bilan.balance_sheet as bs
 
 
 
@@ -504,6 +505,13 @@ def fct1():
             )
             self.resultat_client.bind(on_press=self.remove)
 
+            self.balance_sheet= Button(
+                text="Cliquer pour imprimer le Bilan pour Temporaire Décès",
+                bold=True,
+                background_color=(0.4, 0.2, 0, 1)
+            )
+            self.balance_sheet.bind(on_press=self.bilan)
+
             self.window.add_widget(self.choice)
             self.window.add_widget(self.text_table)
             self.window.add_widget(self.mainbutton)
@@ -554,7 +562,11 @@ def fct1():
             self.window.add_widget(self.resultat_assureur)
             self.window.add_widget(self.resultat_client)
 
+            self.window.add_widget(self.balance_sheet)
             return self.window
+
+        def bilan(self,instance):
+            bs.balance_sheet(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.t.text))
 
         def buton_creation(self):
             assu_fct = DropDown()
