@@ -66,13 +66,10 @@ def courbe_apprentissage(X=X, Y=Y, iteration=150, degree_max=7):
 courbe_apprentissage_score_regression= courbe_apprentissage()
 
 
-plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[1],label = "Regression Polynomial de degré 1")
-plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[2],label = "Regression Polynomial de degré 2")
-plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[3],label = "Regression Polynomial de degré 3")
-# plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[4],label = "Regression Polynomial de degré 4")
-# plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[5],label = "Regression Polynomial de degré 5")
-# plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[6],label = "Regression Polynomial de degré 6")
-# plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[7],label = "Regression Polynomial de degré 7")
+plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[1],label = "Regression Polynomial de degré 5")
+plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[2],label = "Regression Polynomial de degré 6")
+plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[3],label = "Regression Polynomial de degré 7")
+
 
 plt.xlabel("taille du dataset")
 plt.ylabel("score de regression R2")
