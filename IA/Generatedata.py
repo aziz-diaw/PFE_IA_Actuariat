@@ -1,6 +1,6 @@
 ################################################        Génération du set de paramétre                   ###########################################
 import pandas
-
+import numpy as np
 import Actuariat.probabilities_one_insured as poi
 import Table.tables as table
 from matplotlib import pyplot as plt
@@ -83,6 +83,7 @@ df2.to_csv('combinaisons.csv')
 
 
 donnees = pandas.read_csv('combinaisons.csv',usecols=['age', 'nombre_payment' , 'maturite' , 'taux' , 'montant' ,'prime'])
+
 """""""""
 plt.scatter(donnees['age'],donnees['prime'])
 
@@ -105,23 +106,32 @@ max      60.000000       40.000000  ...  8000.000000  7974.305115
 ###  Faire l'analyse de donnée en phrase et essayer de tracer le nuage de point plus parlant qu'un boxplot
 
 
-"""""""""
 ##### Ensemble des boxplots
-data_1 = df2['age']
-data_2 = df2['montant']
-data_3 = df2['nombre_payment']
-data_4 = df2['prime']
-data_5 = df2['taux']
-data_6 = df2['maturite']
-data = [data_1, data_2, data_3, data_4, data_5, data_6]
+# data_1 = donnees['age']
+# data_2 = donnees['montant']
+# data_3 = donnees['nombre_payment']
+data_4 = donnees['prime']
+# data_5 = donnees['taux']
+# data_6 = donnees['maturite']
+# data = [data_1, data_2, data_3, data_4, data_5, data_6]
 
-fig = plt.figure(figsize=(10, 7))
-ax = fig.add_axes([0, 0, 1, 1])
-bp = ax.boxplot(data)
+# fig = plt.figure(figsize=(10, 7))
+# ax = fig.add_axes([0, 0, 1, 1])
+# ax.set(xlabel = 'age', ylabel= 'prime')
+# bp = ax.boxplot(data)
+# plt.show()
+
+fig1, ax1 = plt.subplots()
+ax1.set_title('Boxplot des Primes')
+ax1.boxplot(data_4)
+plt.xlabel("primes")
+plt.ylabel("valeurs en € ")
 plt.show()
 
 #### comportement de la prime en fonction de chaque paramétre
-"""""""""
+
+
+
 donnees = pandas.read_csv('combinaisons.csv',usecols=['age', 'nombre_payment' , 'maturite' , 'taux' , 'montant' ,'prime'])
 fig, axs = plt.subplots(3, 2)
 axs[0, 0].scatter(x=donnees['age'], y=donnees['prime'])
@@ -141,22 +151,25 @@ axs[2,0].set(xlabel = 'montant', ylabel= 'prime_prédite')
 
 plt.show()
 
-"""""""""
-sns.boxplot(data= donnees, y = "prime", x = "maturite")  #### évolution prime en fonction de la maturité
-plt.show()
+
+# sns.boxplot(data= donnees, y = "prime", x = "maturite")  #### évolution prime en fonction de la maturité
+# plt.show()
+#
+#
+# sns.boxplot(data= donnees, y = "prime", x = "age")  #### évolution prime en fonction de l'age
+# plt.show()
+#
+#
+# sns.boxplot(data= donnees, y = "prime", x = "nombre_payment")  #### évolution prime en fonction du nombre de payment
+# plt.show()
+#
+#
+# sns.boxplot(data= donnees, y = "prime", x = "taux")  #### évolution prime en fonction du taux
+# plt.show()
 
 
-sns.boxplot(data= donnees, y = "prime", x = "age")  #### évolution prime en fonction de l'age
-plt.show()
 
 
-sns.boxplot(data= donnees, y = "prime", x = "nombre_payment")  #### évolution prime en fonction du nombre de payment
-plt.show()
 
-
-sns.boxplot(data= donnees, y = "prime", x = "taux")  #### évolution prime en fonction du taux
-plt.show()
-"""""""""
-""""""""""""
 
 
