@@ -975,7 +975,7 @@ def fct1():
                 elif self.categorie_assureur.text == "Stress product":
                     if self.fonction_assureur.text == "nAx_stress":
                         if (int(self.age.text) < 0) | (float(self.i.text) < 0) | (float(self.i.text) > 1) | (
-                                int(self.n.text) < 0)  | (float(self.stress_rate.text) < 0) | (float(self.stress_rate.text) > 1) :
+                                int(self.n.text) < 0)   :
                             self.resultat_assureur.text = "Erreur dans les paramètres saisis"
                         else :
                             self.resultat_assureur.text =str(self.float_round_up(st.nAx_stress(int(self.age.text),float(self.i.text),int(self.n.text),float(self.stress_rate.text),self.choix_table())))
