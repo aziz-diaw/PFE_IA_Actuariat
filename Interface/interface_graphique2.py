@@ -470,12 +470,12 @@ def fct1():
             assu.add_widget(self.cat6)
 
             self.cat7 = Button(text="Stress product", size_hint_y=None, height=44)
-            self.cat7.bind(on_release=lambda cat6: assu.select(self.cat7.text))
+            self.cat7.bind(on_release=lambda cat7: assu.select(self.cat7.text))
             assu.add_widget(self.cat7)
 
-            self.cat7 = Button(text="Reserves", size_hint_y=None, height=44)
-            self.cat7.bind(on_release=lambda cat6: assu.select(self.cat7.text))
-            assu.add_widget(self.cat7)
+            self.cat8 = Button(text="Reserves", size_hint_y=None, height=44)
+            self.cat8.bind(on_release=lambda cat8: assu.select(self.cat8.text))
+            assu.add_widget(self.cat8)
 
 
             self.categorie_assureur = Button(text="Choix du type de produit",
