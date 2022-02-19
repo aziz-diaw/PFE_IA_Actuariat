@@ -6,7 +6,7 @@ import Table.tables
 
 def balance_sheet(x, n, m, i, table, t):
     P = prod.annual_nAx(x, n, m, i, table)
-    workbook = xls.Workbook('Balance_sheet_for_Term_Insurance.xlsx')
+    workbook = xls.Workbook('Balance_sheet_for_Term_Insurance_2.xlsx')
     ws = workbook.add_worksheet("Balance Sheet")
 
     for T in range(0, t):
