@@ -52,6 +52,30 @@ def annual_nAx(x, n, m, i, table, C=1,IA=False):
         unique = nAx(x, n, i, table,C) / annual
     return unique
 
+def single_nAx(x, n, m, i, table, C=1,IA=False):
+    annual = 0
+    for k in range(0, m):
+        annual = annual + nEx(x, k, i, table)
+
+    if IA == True:
+        donnees = pandas.read_csv('combinaisons.csv',
+                                  usecols=['age', 'nombre_payment', 'maturite', 'taux', 'montant', 'prime'])
+        X = donnees.drop("prime", axis=1)
+        X = X.values
+        Y = donnees['prime']
+        X_train, _, Y_train, _ = train_test_split(X, Y, random_state=0)
+        # pol = PolynomialFeatures(degree=5)
+        # x_train = pol.fit_transform(X_train)
+        # model = LinearRegression()
+        model2 = KNeighborsRegressor(n_neighbors=1)
+        model2.fit(X_train, Y_train)
+        x_IA = numpy.array([[x, m, n, i, C]])
+        # x_IA = pol.fit_transform(x_IA)
+        unique = model2.predict(x_IA)*annual
+    else:
+        unique = nAx(x, n, i, table,C)
+    return unique
+
 
 # Endowment
 def Ax_n(C, x, n, i, table):
