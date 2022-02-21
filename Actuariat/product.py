@@ -2,6 +2,7 @@ import numpy
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
+from sklearn.neighbors import KNeighborsRegressor
 
 import Actuariat.commutation_case_life as ccl
 import Actuariat.commutation_case_death as ccd
@@ -40,13 +41,14 @@ def annual_nAx(x,n,m,i,table,IA = False):
         pol = PolynomialFeatures(degree=5)
         x_train = pol.fit_transform(X_train)
         model = LinearRegression()
-        model.fit(x_train, Y_train)
-        x_IA = numpy.array([[x,m,n,i,1]])
-        x_IA = pol.fit_transform(x_IA)
-        unique = model.predict(x_IA)
+        model2 = KNeighborsRegressor(n_neighbors=1)
+        model2.fit(X_train, Y_train)
+        x_IA = numpy.array([[x,m,n,i,2000]])
+        #x_IA = pol.fit_transform(x_IA)
+        unique = model2.predict(x_IA)
     else :
-        unique = nAx(x, n, i, table)
-    return unique / annual
+        unique = nAx(x, n, i, table)/annual
+    return unique
 
 # Endowment
 def Ax_n(C, x, n, i, table):
@@ -58,8 +60,10 @@ def Cx_n(C1, C2, x, n, i):
     b = C1 * nEx(x, n, i, tables.TH_00_02) + C2 * nAx(x, n, i, tables.TH_00_02)
     return max(a, b)
 
-x = 50
-n = m = 5
-i = 0.01
+x = 40
+n = 20
+m = 20
+i = 0.02
 table = Table.tables.TH_00_02
-print(annual_nAx(x,n,m,i,table,True))
+#print(annual_nAx(x,n,m,i,table,False)*2000)
+#print(annual_nAx(x,n,m,i,table,True))
