@@ -29,7 +29,7 @@ def opti_poly_degree(degree_max):
     return r2
 
 #
-# degre_pol = opti_poly_degree(10)
+degre_pol = opti_poly_degree(2)
 # print(degre_pol)
 # print("le modèle polynomial qui fit le mieux nos donnés est un modèle de degré : ", np.argmax(degre_pol)+1)
 # print("Le coeffcient r2 de ce modèle est : ", degre_pol[np.argmax(degre_pol)])
@@ -43,10 +43,10 @@ def opti_poly_degree(degree_max):
 #### courbe apprentissage pour le meilleur polynôme ####
 
 
-def courbe_apprentissage(X=X, Y=Y, iteration=150, degree_max=7):
+def courbe_apprentissage(X=X, Y=Y, iteration=150, degree_max=1):
     split = np.linspace(0.01, 0.95, num=iteration)
     r2 = np.zeros(int(split.shape[0]))
-    for k in range(5, degree_max + 1):
+    for k in range(1, degree_max + 1):
         print(k)
         r2_k = []
         for s in split:
@@ -63,17 +63,17 @@ def courbe_apprentissage(X=X, Y=Y, iteration=150, degree_max=7):
     return r2
 
 
-courbe_apprentissage_score_regression= courbe_apprentissage()
+# courbe_apprentissage_score_regression= courbe_apprentissage()
+#
+#
+# plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[1],label = "Regression Polynomial de degré 1")
+# plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[2],label = "Regression Polynomial de degré 6")
+# plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[3],label = "Regression Polynomial de degré 7")
 
 
-plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[1],label = "Regression Polynomial de degré 5")
-plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[2],label = "Regression Polynomial de degré 6")
-plt.plot(np.linspace(0,X.shape[0],courbe_apprentissage_score_regression.shape[1]),courbe_apprentissage_score_regression[3],label = "Regression Polynomial de degré 7")
-
-
-plt.xlabel("taille du dataset")
-plt.ylabel("score de regression R2")
-plt.title("Courbe d'apprentissage pour différents modèles polynomiaux")
-plt.ylim(0,1)
-plt.legend()
-plt.show()
+# plt.xlabel("taille du dataset")
+# plt.ylabel("score de regression R2")
+# plt.title("Courbe d'apprentissage pour différents modèles polynomiaux")
+# plt.ylim(-10,1)
+# plt.legend()
+# plt.show()

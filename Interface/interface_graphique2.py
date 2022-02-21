@@ -369,7 +369,7 @@ def fct1():
                 multiline=False,
                 padding_y=(20, 20),
                 size_hint=(0.5, 0.5),
-                input_filter="float"
+                input_filter="int"
             )
 
             self.saisie_clife = Label(
@@ -566,7 +566,7 @@ def fct1():
             return self.window
 
         def bilan(self,instance):
-            bs.balance_sheet(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.t.text))
+            bs.balance_sheet(int(self.age.text),int(self.n.text),int(self.m.text),float(self.i.text),self.choix_table(),int(self.t.text),int(self.c_benef.text))
 
         def buton_creation(self):
             assu_fct = DropDown()

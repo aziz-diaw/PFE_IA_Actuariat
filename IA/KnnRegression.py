@@ -109,10 +109,10 @@ plt.show()
 ############## Détermination du meilleur K
 
 
-parameters = {"n_neighbors": range(1, 50)}
-gridsearch = GridSearchCV(KNeighborsRegressor(), parameters)
-gridsearch.fit(X_train, Y_train)
-print(gridsearch.best_params_)
+# parameters = {"n_neighbors": range(1, 50)}
+# gridsearch = GridSearchCV(KNeighborsRegressor(), parameters)
+# gridsearch.fit(X_train, Y_train)
+# print(gridsearch.best_params_)
 
 
 """""""""
@@ -182,14 +182,15 @@ def courbe_apprentissage(split = 2):
         r2 = np.vstack((r2,r2_k))
     return r2
 
-
+#
 courbe_apprentissage_score_regression= courbe_apprentissage()
-print(courbe_apprentissage_score_regression[1])
+#print(courbe_apprentissage_score_regression[1])
 #
 #
 split = 2
 plt.plot(range(0,3150,2),courbe_apprentissage_score_regression[1],label = "Regression knn pour k=1")
-#plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[2],label = "Regression knn pour k=2")
+plt.ylim(0,1)
+plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[2],label = "Regression knn pour k=2")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[3],label = "Regression Polynomial de degré 3")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[4],label = "Regression Polynomial de degré 4")
 # plt.plot(range(split,X_train.shape[0]+split,split),courbe_apprentissage_score_regression[5],label = "Regression Polynomial de degré 5")
