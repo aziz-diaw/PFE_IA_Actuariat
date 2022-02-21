@@ -48,9 +48,10 @@ def balance_sheet(x, n, m, i, table, t,C):
         else:
             lpr2 = form.last_premium_reserves(x, n, m, i, table, T,C,True)
         claims2 = form.claims(x, T, table,C)
-        pr2 = form.premiums_reserves(x, n, m, i, table, T, P2,C,True)
+
         tot_ass2 = form.total_ASSET(x, n, m, i, table, T, P2,C,True)
         tot_lia2 = form.total_LIABILITY(x, n, m, i, table, T, P2,C,True)
+        pr2 = tot_lia2 - claims2
 
         ws.write(T + 6 * T, 0+second, "End of year" + str(T + 1))
         ws.write(T + 6 * T, 1+second, "BALANCE SHEET WITH IA")
