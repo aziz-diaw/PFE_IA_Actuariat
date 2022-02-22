@@ -6,17 +6,18 @@ import Table.tables
 
 def nAx_reserve(x, n,m, i, table, t, C,isIA = False):
     if isIA :
-        return prod.single_nAx(x + t, n - t,m, i, table,C,True) - prod.annual_nAx(x,n,m,i,table,C,True) * la._a_xn_(x + t, n - t, i, table)
+        return C*prod.nAx(x + t, n - t, i, table)  - prod.annual_nAx(x,n,m,i,table,C,True) * la._a_xn_(x + t, m - t, i, table)
     else :
-        return C*prod.nAx(x + t, n - t, i, table) - prod.annual_nAx(x,n,m,i,table,C,False) * la._a_xn_(x + t, n - t, i, table)
+        return C*prod.nAx(x + t, n - t, i, table) - prod.annual_nAx(x,n,m,i,table,C,False) * la._a_xn_(x + t, m - t, i, table)
 
 x=40
 n=15
-m=15
+m=10
 i=0.001
 C=2000
-#for t in range(0,4):
-    #print(nAx_reserve(x,n,m,i,Table.tables.TH_00_02,t,C,False))
+t=1
+
+print(nAx_reserve(x,n,m,i,Table.tables.TH_00_02,t,C,False))
 
 # res = [ nAx_reserve(50,5,5,0.01,Table.tables.TH_00_02,i)  for i in range(6) ]
 #

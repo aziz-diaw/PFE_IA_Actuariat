@@ -2,6 +2,7 @@ import random
 import numpy as np
 import Bilan.formulae as form
 import Actuariat.product as prod
+import Table.tables
 import Table.tables as table
 
 taille = 500
@@ -27,21 +28,21 @@ def portefeuille(taille,table) :
     total_lia_ia = np.zeros(1)
 
 
-    for c in range(Client.shape[0]) :
+    for c in range(Client.shape[0]) : # chaque portefeuille, on étale sur les années de blian qui doit etre inf ou egal aux max nombre de payment
         x = int(Client[c,0])
         n = int(Client[c,2])
         m = int(Client[c,1])
         i = Client[c,3]
         C = Client[c,4]
-        print(x,n,m,i,C)
-        for T in range(0,n):
-
+        #print(x,n,m,i,C)
+        for T in range(0,int(min(Client[:,1]))): ## sur toute la taille de portefeuille
+           #print(T)
 
             P = prod.annual_nAx(x, n, m, i, table, C, False)
-            prem = form.premiums(x, n, m, i, table,C,False)
-            prem_a[0] += prem
+            print(form.V_t(x, n, m, i, table, T, C, False))
+            prem_a[0] += P ## somme des primes
             fin_inc = form.financial_income(form.V_t(x, n, m, i, table, T,C,False), P, i)
-            fin_inc_a[0] += fin_inc
+            fin_inc_a[0] += fin_inc # somme des fin_inc
             if T == 0:
                 lpr = 0
                 lpr_a[0] += lpr
@@ -78,7 +79,7 @@ def portefeuille(taille,table) :
             pr2 = tot_lia2 - claims2
             pr_ia[0]+=pr2
 
-    return prem_a,fin_inc_a ,lpr_a ,claims_a ,pr_a ,total_ass_a ,total_lia_a,prem_ia ,fin_inc_ia ,lpr_ia , claims_ia ,pr_ia ,total_ass_ia ,total_lia_ia
+    return prem_a,fin_inc_a ,lpr_a ,claims_a ,pr_a ,total_ass_a ,total_lia_a ,prem_ia ,fin_inc_ia ,lpr_ia , claims_ia ,pr_ia ,total_ass_ia ,total_lia_ia
 
 
 
@@ -101,31 +102,23 @@ def liste_client(taille):  # x , m , n , i , amount
     for i in range(0, taille):
         Client[i, j] = x[i]  # age
 
-    j = 1
-    for i in range(0, taille):
-        if x[i] <= 30:
-            Client[i, j] = random.randint(0, 42)  # différé
-        elif x[i] > 30 and x[i] <= 45:
-            Client[i, j] = random.randint(0, 35)
-        elif x[i] > 45 and x[i] <= 55:
-            Client[i, j] = random.randint(0, 20)
-        elif x[i] > 55 and x[i] <= 65:
-            Client[i, j] = random.randint(0, 10)
-        else:
-            Client[i, j] = 0
-
     j = 2
     for i in range(0, taille):
         if x[i] <= 30:
-            Client[i, j] = random.randint(0, 42)  # nbre paiements
+            Client[i, j] = random.randint(1, 42)  # on fait d'abord la maturité avant le nombre de payment
         elif x[i] > 30 and x[i] <= 45:
-            Client[i, j] = random.randint(0, 35)
+            Client[i, j] = random.randint(1, 35)
         elif x[i] > 45 and x[i] <= 55:
-            Client[i, j] = random.randint(0, 20)
+            Client[i, j] = random.randint(1, 20)
         elif x[i] > 55 and x[i] <= 65:
-            Client[i, j] = random.randint(0, 20)
+            Client[i, j] = random.randint(1, 20)
         else:
-            Client[i, j] = random.randint(0, 15)
+            Client[i, j] = random.randint(1, 15)
+
+    j = 1
+    for i in range(0, taille):
+            Client[i, j] = random.randint(1, Client[i,2])  # nombre_de_payment on génére en max la maturité car impossibilité de la dépasser
+
 
     j = 3
     for i in range(0, taille):
@@ -138,4 +131,6 @@ def liste_client(taille):  # x , m , n , i , amount
     return Client
 
 random.seed(2)
-print(portefeuille(1,table.TH_00_02))
+print(portefeuille(2,table.TH_00_02))
+
+
