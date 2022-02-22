@@ -8,10 +8,13 @@ import Table.tables
 
 
 def V_t(x, n, m, i, table, t,C,isIA = False):
-    if isIA :
-        return res.nAx_reserve(x, n, m, i, table, t,C,True)
-    else :
-        return res.nAx_reserve(x, n, m, i, table,t,C)
+    if t==0:
+        return 0
+    else:
+        if isIA :
+            return res.nAx_reserve(x, n, m, i, table, t,C,True)
+        else :
+            return res.nAx_reserve(x, n, m, i, table,t,C,False)
 
 
 def V_t_1(x, n, m, i, table, t,P,C,isIA = False) :

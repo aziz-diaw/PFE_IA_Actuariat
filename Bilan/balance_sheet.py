@@ -12,6 +12,7 @@ def balance_sheet(x, n, m, i, table, t,C):
     for T in range(0, t):
         prem = form.premiums(x, n, m, i, table,C,False)
         fin_inc = form.financial_income(form.V_t(x, n, m, i, table, T,C,False), P, i)
+        print(fin_inc)
         if T == 0:
             lpr = 0
         else:
@@ -51,7 +52,7 @@ def balance_sheet(x, n, m, i, table, t,C):
 
         tot_ass2 = form.total_ASSET(x, n, m, i, table, T, P2,C,True)
         tot_lia2 = form.total_LIABILITY(x, n, m, i, table, T, P2,C,True)
-        pr2 = tot_lia2 - claims2
+        pr2 = tot_ass2 - claims2
 
         ws.write(T + 6 * T, 0+second, "End of year" + str(T + 1))
         ws.write(T + 6 * T, 1+second, "BALANCE SHEET WITH IA")
