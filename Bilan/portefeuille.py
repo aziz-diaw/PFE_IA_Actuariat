@@ -129,13 +129,13 @@ def liste_client(taille):  # x , m , n , i , amount
 
     j = 3
     for i in range(0, taille):
-        Client[i, j] = float(random.uniform(0.005, 0.015))  # taux d'intérêt
+        Client[i, j] = float(random.uniform(0.001, 0.02))  # taux d'intérêt
 
     j = 4
     for i in range(0, taille):
-        Client[i, j] = random.randint(1000, 3500)  # amount
+        Client[i, j] = random.randint(1000, 8000)  # amount
 
     return Client
 
-random.seed(1)
+random.seed(2)
 print(portefeuille(1,table.TH_00_02))
