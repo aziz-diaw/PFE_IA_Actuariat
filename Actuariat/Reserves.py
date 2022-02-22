@@ -6,29 +6,19 @@ import Table.tables
 
 def nAx_reserve(x, n,m, i, table, t, C,isIA = False):
     if isIA :
-        A =C*prod.nAx(x + t, n - t, i, table) - prod.annual_nAx(x, n, m, i, table, C, True)*la._a_xn_(x + t, n - t, i, table)
-        print(A)
-        return A
+        return prod.single_nAx(x + t, n - t,m, i, table,C,True) - prod.annual_nAx(x,n,m,i,table,C,True) * la._a_xn_(x + t, n - t, i, table)
     else :
-        B=C*prod.nAx(x + t, n - t, i, table) - prod.annual_nAx(x,n,m,i,table,C,False) * la._a_xn_(x + t, n - t, i, table)
-        print(B)
-        return B
+        return C*prod.nAx(x + t, n - t, i, table) - prod.annual_nAx(x,n,m,i,table,C,False) * la._a_xn_(x + t, n - t, i, table)
 
 x=40
 n=15
 m=15
 i=0.001
 C=2000
-t=1
-#print(C*prod.nAx(x + t, n - t, i, Table.tables.TH_00_02))
-#print(prod.single_nAx(x + t, n - t,m, i, Table.tables.TH_00_02,C,False))
-#print(prod.single_nAx(x,n,m,i,Table.tables.TH_00_02,C,True))
-#print(prod.annual_nAx(x,n,m,i,Table.tables.TH_00_02,C,False))
+#for t in range(0,4):
+    #print(nAx_reserve(x,n,m,i,Table.tables.TH_00_02,t,C,False))
 
-
-#nAx_reserve(50,5,5,0.01,Table.tables.TH_00_02,2,2000,True)
-#nAx_reserve(50,5,5,0.01,Table.tables.TH_00_02,2,2000,False)
-
+# res = [ nAx_reserve(50,5,5,0.01,Table.tables.TH_00_02,i)  for i in range(6) ]
 #
 # plt.scatter(range(6),res)
 # plt.xlabel("durée du contrat en année")

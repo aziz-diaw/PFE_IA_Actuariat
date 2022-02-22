@@ -1,4 +1,5 @@
 #### TERM INSURANCE CASE ###
+import Actuariat.product
 import Actuariat.product as prod
 import Actuariat.Reserves as res
 import Actuariat.probabilities_one_insured as poi
@@ -74,6 +75,3 @@ def total_LIABILITY(x, n, m, i, table, t,P,C, isIA = False):
     else :
         return claims(x,t,table,C) + premiums_reserves(x, n, m, i, table, t,P,C)
 
-# T = 4
-# print(total_LIABILITY(50,5,5,0.01,Table.tables.TH_00_02,T,prod.annual_nAx(50,5,5,0.01,Table.tables.TH_00_02)))
-# print(total_ASSET(50,5,5,0.01,Table.tables.TH_00_02,T,prod.annual_nAx(50,5,5,0.01,Table.tables.TH_00_02)))

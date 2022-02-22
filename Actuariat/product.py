@@ -71,7 +71,7 @@ def single_nAx(x, n, m, i, table, C=1,IA=False):
         model2.fit(X_train, Y_train)
         x_IA = numpy.array([[x, m, n, i, C]])
         # x_IA = pol.fit_transform(x_IA)
-        unique = model2.predict(x_IA)*annual
+        unique = model2.predict(x_IA)#*annual
     else:
         unique = nAx(x, n, i, table,C)
     return unique
@@ -88,10 +88,3 @@ def Cx_n(C1, C2, x, n, i):
     return max(a, b)
 
 
-# x = 50
-# n = 5
-# m = 5
-# i = 0.01
-# table = Table.tables.TH_00_02
-# print(annual_nAx(x, n, m, i, table,2000,False))
-# print(annual_nAx(x, n, m, i, table,2000, True))
