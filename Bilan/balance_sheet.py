@@ -77,11 +77,12 @@ def balance_sheet(x, n, m, i, table, t,C):
     workbook.close()
 
 
-x =50
-m = 5
-n = 5
-i = 0.01
-t = 5
-C = 2000
-table = Table.tables.TH_00_02
-balance_sheet(x, n, m, i, table, t,C)
+# x =50
+# m = 5
+# n = 5
+# i = 0.01
+# t = 5
+# C = 2000
+# table = Table.tables.TH_00_02
+# balance_sheet(x, n, m, i, table, t,C)
+
